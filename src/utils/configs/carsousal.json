@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "first123",
+    "slug": "/",
+    "name": "new fashion design",
+    "sourceType": "img",
+    "imgUrl": "/assets/images/popular/slide-1.jpg"
+  },
+  {
+    "_id": "second123",
+    "slug": "/",
+    "name": "best shoes",
+    "sourceType": "img",
+    "imgUrl": "/assets/images/popular/slide-2.jpg"
+  }
+]

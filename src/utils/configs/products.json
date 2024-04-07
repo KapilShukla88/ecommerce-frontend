@@ -1,0 +1,111 @@
+[
+  {
+    "_id": "section_1",
+    "title": "Popular Products",
+    "assets": [
+      {
+        "_id": "product_one_1",
+        "slug": "product_one_1",
+        "imgURLS": [
+          "/assets/images/cameras/camera-product-1.jpg",
+          "/assets/images/cameras/camera-2.jpg",
+          "/assets/images/cameras/camera-3.jpg"
+        ],
+        "name": "Sony Camera Plus",
+        "price": "From ₹800",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "_id": "product_one_2",
+        "slug": "product_one_2",
+        "imgURLS": [
+          "/assets/images/earphones/earphones-1.jpg",
+          "/assets/images/earphones/earphones-2.jpg",
+          "/assets/images/earphones/earphones-3.jpg"
+        ],
+        "name": "Apple earbuds",
+        "price": "From ₹20000",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "_id": "product_one_3",
+        "slug": "product_one_3",
+        "imgURLS": [
+          "/assets/images/phones/phone-1.jpg",
+          "/assets/images/phones/phone-2.jpg",
+          "/assets/images/phones/phone-3.jpg"
+        ],
+        "name": "Samsung Phones",
+        "price": "From ₹65000",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "_id": "product_one_4",
+        "slug": "product_one_4",
+        "imgURLS": [
+          "/assets/images/watches/watch-1.jpg",
+          "/assets/images/watches/watch-2.jpg",
+          "/assets/images/watches/watch-3.jpg"
+        ],
+        "name": "Noise",
+        "price": "From ₹2200",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  {
+    "_id": "section_2",
+    "title": "Favorites in Men Fashion",
+    "assets": [
+      {
+        "_id": "product_one_1",
+        "slug": "product_one_1",
+        "imgURLS": [
+          "/assets/images/shirts/shirt-1.jpg",
+          "/assets/images/shirts/shirt-2.jpg"
+        ],
+        "name": "Shirts",
+        "price": "₹800",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "_id": "product_one_2",
+        "slug": "product_one_2",
+        "imgURLS": [
+          "/assets/images/sneakers/sneaker-1.jpg",
+          "/assets/images/sneakers/sneaker-2.jpg",
+          "/assets/images/sneakers/sneaker-3.jpg",
+          "/assets/images/sneakers/sneaker-4.jpg"
+        ],
+        "name": "Sneakers",
+        "price": "₹2000",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "_id": "product_one_3",
+        "slug": "product_one_3",
+        "imgURLS": [
+          "/assets/images/t-shirts/t-shirts-1.jpg",
+          "/assets/images/t-shirts/t-shirts-2.jpg",
+          "/assets/images/phones/phone-3.jpg",
+          "/assets/images/phones/phone-3.jpg"
+        ],
+        "name": "T-Shirts",
+        "price": "₹650",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "_id": "product_one_4",
+        "slug": "product_one_4",
+        "imgURLS": [
+          "/assets/images/trousers/trouser-1.jpg",
+          "/assets/images/trousers/trouser-2.jpg",
+          "/assets/images/trousers/trouser-3.jpg"
+        ],
+        "name": "Trousers",
+        "price": "₹220",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  }
+]
