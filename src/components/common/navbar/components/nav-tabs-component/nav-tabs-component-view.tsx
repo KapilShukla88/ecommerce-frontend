@@ -21,7 +21,7 @@ const NavTabsComponentView = () => {
         <Link href="/" className="font-semibold">
           Home
         </Link>
-        <Link href="/" className="font-semibold">
+        <Link href="/products" className="font-semibold">
           Products
         </Link>
         {/* categories dropdown */}

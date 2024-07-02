@@ -1,0 +1,4 @@
+type RootState = {
+  ui: {};
+  entities: {};
+};

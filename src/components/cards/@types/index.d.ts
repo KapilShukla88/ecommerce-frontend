@@ -1,9 +1,12 @@
 interface iCardsParams {
   children: React.ReactNode;
-  title?: string;
-  price?: string;
-  subTitle?: string;
-  btnText?: string;
+  readonly productId: string;
+  readonly title?: string;
+  readonly price?: string;
+  readonly subTitle?: string;
+  readonly btnText?: string;
+  readonly isCartNeed?: boolean;
+  onClick(_id: string): void;
 }
 
 interface iCardsViewParams extends iCardsParams {}

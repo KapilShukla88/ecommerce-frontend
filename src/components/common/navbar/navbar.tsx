@@ -5,7 +5,7 @@ import NavbarView from "./navbar-view";
 import useNavbarController from "./navbar-controller";
 
 const Navbar = () => {
-  const {isScrolled} = useNavbarController();
+  const { isScrolled } = useNavbarController();
   return <NavbarView isScrolled={isScrolled} />;
 };
 

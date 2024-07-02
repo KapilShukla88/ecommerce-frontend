@@ -1,0 +1,310 @@
+[
+  {
+    "_id": 1,
+    "title": "Clothes you never wear before",
+    "category": "clothes",
+    "products": [
+      {
+        "_id": "tommy-hilfigure-classic-mens-shirt",
+        "slug": "tommy-hilfigure-classic-mens-shirt",
+        "imgURLS": [
+          "/assets/images/shirts/shirt-1.jpg",
+          "/assets/images/shirts/shirt-2.jpg"
+        ],
+        "productName": "Tommy Hilfigure Classic Mens Shirt",
+        "price": 1500,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "clothes",
+        "subCategory": "shirt",
+        "brand": "tommyHilfigure"
+      },
+      {
+        "_id": "pantaloon-mens-shirt",
+        "slug": "pantaloon-mens-shirt",
+        "imgURLS": [
+          "/assets/images/shirts/shirt-1.jpg",
+          "/assets/images/shirts/shirt-2.jpg"
+        ],
+        "productName": "Pantaloon Mens Shirt",
+        "price": 1500,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "clothes",
+        "subCategory": "shirt",
+        "brand": "pantaloon"
+      },
+      {
+        "_id": "puma-tshirt-men",
+        "slug": "puma-tshirt-men",
+        "imgURLS": [
+          "/assets/images/t-shirts/t-shirts-1.jpg",
+          "/assets/images/t-shirts/t-shirts-2.jpg",
+          "/assets/images/phones/phone-3.jpg",
+          "/assets/images/phones/phone-3.jpg"
+        ],
+        "productName": "Puma T-shirt for mens",
+        "price": 850,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "clothes",
+        "subCategory": "tshirt",
+        "brand": "puma"
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "title": "Most expensive cameras",
+    "category": "cameras",
+    "products": [
+      {
+        "_id": "Sony-α900-DSLR-A900",
+        "slug": "Sony-α900-DSLR-A900",
+        "imgURLS": [
+          "/assets/images/cameras/camera-product-1.jpg",
+          "/assets/images/cameras/camera-3.jpg"
+        ],
+        "productName": "Sony α900",
+        "price": 80000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "cameras",
+        "subCategory": "",
+        "brand": "sony"
+      },
+      {
+        "_id": "Sony-α850-DSLR-A850",
+        "slug": "Sony-α850-DSLR-A850",
+        "imgURLS": [
+          "/assets/images/cameras/camera-product-1.jpg",
+          "/assets/images/cameras/camera-2.jpg"
+        ],
+        "productName": "Sony α850",
+        "price": 100000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "cameras",
+        "subCategory": "",
+        "brand": "sony"
+      },
+      {
+        "_id": "canonflex-slr",
+        "slug": "canonflex-slr",
+        "imgURLS": [
+          "/assets/images/cameras/camera-2.jpg",
+          "/assets/images/cameras/camera-3.jpg"
+        ],
+        "productName": "Canonflex SLR",
+        "price": 10000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "cameras",
+        "subCategory": "",
+        "brand": "canon"
+      }
+    ]
+  },
+  {
+    "_id": 3,
+    "title": "Footwear: Sneakers, Boots etc.",
+    "category": "footwear",
+    "products": [
+      {
+        "_id": "nike-jordans-white",
+        "slug": "nike-jordans-white",
+        "imgURLS": [
+          "/assets/images/sneakers/sneaker-1.jpg",
+          "/assets/images/sneakers/sneaker-2.jpg",
+          "/assets/images/sneakers/sneaker-3.jpg",
+          "/assets/images/sneakers/sneaker-4.jpg"
+        ],
+        "productName": "Nike Jordans White Sneakers",
+        "price": 30000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "footwear",
+        "subCategory": "sneakers",
+        "brand": "nike"
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "title": "Watches: Smart, digital etc.",
+    "category": "watches",
+    "products": [
+      {
+        "_id": "noise-smart-watch-pro",
+        "slug": "noise-smart-watch-pro",
+        "imgURLS": [
+          "/assets/images/watches/watch-1.jpg",
+          "/assets/images/watches/watch-2.jpg",
+          "/assets/images/watches/watch-3.jpg"
+        ],
+        "productName": "Noise Smart Watch pro",
+        "price": 2000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "watches",
+        "subCategory": "",
+        "brand": "noise"
+      },
+      {
+        "_id": "samsung-watch-44-inch",
+        "slug": "samsung-watch-44-inch",
+        "imgURLS": [
+          "/assets/images/watches/watch-1.jpg",
+          "/assets/images/watches/watch-2.jpg",
+          "/assets/images/watches/watch-3.jpg"
+        ],
+        "productName": "Samsung Smart Watch 44 inch",
+        "price": 9999,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "watches",
+        "subCategory": "",
+        "brand": "samsung"
+      },
+      {
+        "_id": "apple-iwatch-pro",
+        "slug": "apple-iwatch-pro",
+        "imgURLS": [
+          "/assets/images/watches/watch-1.jpg",
+          "/assets/images/watches/watch-2.jpg",
+          "/assets/images/watches/watch-3.jpg"
+        ],
+        "productName": "Apple iWatch",
+        "price": 29999,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "watches",
+        "subCategory": "",
+        "brand": "apple"
+      }
+    ]
+  },
+  {
+    "_id": 5,
+    "title": "Don't miss the great deals",
+    "category": "phones",
+    "products": [
+      {
+        "_id": "samsung-phone-s23",
+        "slug": "samsung-phone-s23",
+        "imgURLS": [
+          "/assets/images/phones/phone-1.jpg",
+          "/assets/images/phones/phone-2.jpg",
+          "/assets/images/phones/phone-3.jpg"
+        ],
+        "productName": "Samsung Phone S23",
+        "price": 65000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "phones",
+        "subCategory": "",
+        "brand": "samsung"
+      },
+      {
+        "_id": "apple-iphone-15",
+        "slug": "apple-iphone-15",
+        "imgURLS": [
+          "/assets/images/phones/phone-1.jpg",
+          "/assets/images/phones/phone-2.jpg",
+          "/assets/images/phones/phone-3.jpg"
+        ],
+        "productName": "Apple IPhone 15",
+        "price": 1500000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "phones",
+        "subCategory": "",
+        "brand": "apple"
+      },
+      {
+        "_id": "apple-iphone-15-pro-max",
+        "slug": "apple-iphone-15-pro-max",
+        "imgURLS": [
+          "/assets/images/phones/phone-1.jpg",
+          "/assets/images/phones/phone-2.jpg",
+          "/assets/images/phones/phone-3.jpg"
+        ],
+        "productName": "Apple IPhone 15 Pro Max",
+        "price": 175000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "phones",
+        "subCategory": "",
+        "brand": "apple"
+      }
+    ]
+  },
+  {
+    "_id": 6,
+    "title": "Earbuds: listen it and love it",
+    "category": "audio",
+    "products": [
+      {
+        "_id": "canonflex-r-2000",
+        "slug": "canonflex-r-2000",
+        "imgURLS": [
+          "/assets/images/cameras/camera-2.jpg",
+          "/assets/images/cameras/camera-3.jpg"
+        ],
+        "productName": "Canonflex R 2000",
+        "price": 15000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "audio",
+        "subCategory": "",
+        "brand": "apple"
+      },
+      {
+        "_id": "apple-earbuds-pro",
+        "slug": "apple-earbuds-pro",
+        "imgURLS": [
+          "/assets/images/earphones/earphones-1.jpg",
+          "/assets/images/earphones/earphones-2.jpg",
+          "/assets/images/earphones/earphones-3.jpg"
+        ],
+        "productName": "Apple earbuds Pro",
+        "price": 150000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "audio",
+        "subCategory": "",
+        "brand": "apple"
+      },
+      {
+        "_id": "apple-earbuds-max-pro",
+        "slug": "apple-earbuds-max-pro",
+        "imgURLS": [
+          "/assets/images/earphones/earphones-1.jpg",
+          "/assets/images/earphones/earphones-2.jpg",
+          "/assets/images/earphones/earphones-3.jpg"
+        ],
+        "productName": "Apple earbuds Max Pro",
+        "price": 200000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "audio",
+        "subCategory": "",
+        "brand": "apple"
+      },
+      {
+        "_id": "samsung-buds-pro",
+        "slug": "samsung-buds-pro",
+        "imgURLS": [
+          "/assets/images/earphones/earphones-1.jpg",
+          "/assets/images/earphones/earphones-2.jpg",
+          "/assets/images/earphones/earphones-3.jpg"
+        ],
+        "productName": "Samsung buds pro",
+        "price": 15000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "audio",
+        "subCategory": "",
+        "brand": "samsung"
+      },
+      {
+        "_id": "samsung-buds-s2",
+        "slug": "samsung-buds-s2",
+        "imgURLS": [
+          "/assets/images/earphones/earphones-1.jpg",
+          "/assets/images/earphones/earphones-2.jpg",
+          "/assets/images/earphones/earphones-3.jpg"
+        ],
+        "productName": "Samsung buds S2",
+        "price": 21000,
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "category": "audio",
+        "subCategory": "",
+        "brand": "samsung"
+      }
+    ]
+  }
+]

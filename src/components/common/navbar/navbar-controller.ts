@@ -21,7 +21,7 @@ const useNavbarController = () => {
     };
   }, []);
 
-  return {isScrolled};
+  return { isScrolled };
 };
 
 export default useNavbarController;

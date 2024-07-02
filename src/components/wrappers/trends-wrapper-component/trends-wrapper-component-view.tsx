@@ -5,11 +5,11 @@ import React from "react";
 const getPositionClassName = (position: trendsContentPosition) => {
   switch (position) {
     case "center":
-      return "items-center top-0 md:left-[22%] ";
+      return "md:items-center md:top-0 md:left-[22%] ";
     case "left":
-      return "items-start left-0 top-0";
+      return "md:items-start md:left-0 md:top-0";
     case "right":
-      return "items-end right-0 top-0";
+      return "md:items-end md:right-0 md:top-0";
     default:
       return "items-center";
   }
