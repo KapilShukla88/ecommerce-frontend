@@ -8,7 +8,7 @@ import entitiesReducer from "./splices/entities";
  */
 const rootReducer = combineReducers({
   // ui: uiReducer,
-  entities: entitiesReducer as any, // remove this any when slices will add on entities
+  entities: entitiesReducer, // remove this any when slices will add on entities
 });
 
 export default rootReducer;

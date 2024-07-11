@@ -5,5 +5,5 @@ interface iCardsCarousalComponentViewParams
 }
 
 interface iCardsCarousalComponentParams {
-  readonly productsImages: string[];
+  readonly productsImages: any;
 }

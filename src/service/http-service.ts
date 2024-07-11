@@ -50,7 +50,7 @@ async function HttpService<T>(
   overiddeBaseURL?: string
 ): Promise<T> {
   const request = createRequest(
-    overiddeBaseURL || "ADD_URL_HERE",
+    overiddeBaseURL || url || "ADD_URL_HERE",
     method,
     data,
     auth ? (getLocalStorage("token") as any) : null,

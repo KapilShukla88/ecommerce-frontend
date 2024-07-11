@@ -3,15 +3,18 @@ import ProductImageComponentView from "./product-image-component-view";
 import useProductImageComponentController from "./product-image-component-controller";
 
 interface iProductImageComponentProps {
+  productId: string;
+  productImages: any;
   selectedImagePosition: number;
   handleOnSelectImage(imageNumber: number): void;
 }
 
 const ProductImageComponent: React.FC<iProductImageComponentProps> = ({
+  productId = "",
+  productImages = [],
   selectedImagePosition = 0,
   handleOnSelectImage = (f: number) => f,
 }) => {
-  const { productId, productImages } = useProductImageComponentController();
   return (
     <ProductImageComponentView
       productId={productId}

@@ -7,6 +7,7 @@ interface iCardsParams {
   readonly btnText?: string;
   readonly isCartNeed?: boolean;
   onClick(_id: string): void;
+  onClickCart(_id: string): void;
 }
 
 interface iCardsViewParams extends iCardsParams {}

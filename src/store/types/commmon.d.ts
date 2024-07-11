@@ -1,4 +1,5 @@
+//TODO: and slices types
 type RootState = {
-  ui: {};
-  entities: {};
+  auth: any;
+  entities: any;
 };

@@ -1,8 +1,12 @@
 "use client";
+import { useAppSelector } from "@store/configure-store";
+import { getCartCount } from "@store/splices/entities/cart";
 import { useEffect, useState } from "react";
 
 const useNavbarController = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  const cartCount = useAppSelector(getCartCount);
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
@@ -21,7 +25,7 @@ const useNavbarController = () => {
     };
   }, []);
 
-  return { isScrolled };
+  return { isScrolled, cartCount };
 };
 
 export default useNavbarController;

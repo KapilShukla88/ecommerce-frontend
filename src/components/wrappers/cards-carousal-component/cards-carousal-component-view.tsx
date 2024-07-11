@@ -5,16 +5,17 @@ import React from "react";
 const CardsCarousalComponentView: React.FC<
   iCardsCarousalComponentViewParams
 > = ({ selectedCardIndex = 0, productsImages = [], onClickCarousalCTA }) => {
-  const productImage = productsImages?.[selectedCardIndex];
+  const productImage = productsImages?.[selectedCardIndex]?.url;
+  const altText = productsImages?.[selectedCardIndex]?.alt_text;
   return (
     <div className="relative">
       <div className="relative h-[20rem] rounded-md overflow-hidden">
-        <Image src={productImage} alt="" fill />
+        <Image src={productImage} alt={altText} fill />
       </div>
       <div className=" absolute inset-x-0 bottom-3 flex justify-center">
         <div className="flex gap-1 m-auto">
           {productsImages &&
-            productsImages?.length > 0 &&
+            productsImages?.length > 1 &&
             productsImages?.map((_: string, index: number) => {
               return (
                 <div

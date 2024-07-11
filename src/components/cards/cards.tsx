@@ -11,6 +11,7 @@ const Cards: React.FC<iCardsParams> = ({
   btnText = "",
   isCartNeed = false,
   onClick = () => {},
+  onClickCart = () => {},
 }) => {
   return (
     <CardsView
@@ -21,6 +22,7 @@ const Cards: React.FC<iCardsParams> = ({
       subTitle={subTitle}
       btnText={btnText}
       onClick={onClick}
+      onClickCart={onClickCart}
     >
       {children}
     </CardsView>

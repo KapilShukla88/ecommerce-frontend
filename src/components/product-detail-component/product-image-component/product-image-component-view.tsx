@@ -3,13 +3,13 @@ import React from "react";
 
 interface iProductImageComponentViewParams {
   productId: string | string[];
-  productImages: string[];
+  productImages: any;
   selectedImagePosition: number;
   handleOnSelectImage(_imageNumber: number): void;
 }
 
 interface iImageSmallSlidesParams {
-  images: string[];
+  images: any;
   selectedImagePosition: number;
   onClickSelectedImage(_index: number): void;
 }
@@ -22,7 +22,7 @@ const ImagesSmallSlides = ({
   return (
     <div className="relative flex flex-col gap-2">
       {images?.length > 0 &&
-        images?.map((image: string, index: number) => {
+        images?.map((image: any, index: number) => {
           return (
             <div
               className={`relative h-[7rem] w-[7rem] rounded-md overflow-hidden  ${
@@ -33,7 +33,7 @@ const ImagesSmallSlides = ({
               key={index}
               onClick={() => onClickSelectedImage(index)}
             >
-              <Image src={image} alt="" fill />
+              <Image src={image?.url} alt={image?.alt_text} fill />
             </div>
           );
         })}
@@ -41,7 +41,7 @@ const ImagesSmallSlides = ({
   );
 };
 
-const ProductImageComponent = ({ productImage }: any) => {
+const ProductImageComponent = ({ productImage, altText = "" }: any) => {
   return (
     <div className="relative">
       <div className="relative min-h-[30rem] max-h-[40rem] w-[30rem] rounded-md shadow-sm overflow-hidden">
@@ -65,7 +65,8 @@ const ProductImageComponentView: React.FC<iProductImageComponentViewParams> = ({
         selectedImagePosition={selectedImagePosition}
       />
       <ProductImageComponent
-        productImage={productImages?.[selectedImagePosition] || ""}
+        productImage={productImages?.[selectedImagePosition]?.url || ""}
+        altText={productImages?.[selectedImagePosition]?.alt_text || ""}
       />
     </div>
   );

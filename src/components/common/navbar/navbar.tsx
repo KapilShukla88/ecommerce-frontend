@@ -5,8 +5,8 @@ import NavbarView from "./navbar-view";
 import useNavbarController from "./navbar-controller";
 
 const Navbar = () => {
-  const { isScrolled } = useNavbarController();
-  return <NavbarView isScrolled={isScrolled} />;
+  const { isScrolled, cartCount } = useNavbarController();
+  return <NavbarView isScrolled={isScrolled} cartCount={cartCount} />;
 };
 
 export default Navbar;

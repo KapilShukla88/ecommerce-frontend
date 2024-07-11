@@ -10,7 +10,9 @@ import { useAppSelector } from "@store/configure-store";
 import { getUserDetails } from "@store/splices/entities/auth";
 import Badge from "@components/common/badge-component";
 
-const NavProfileComponentView = () => {
+const NavProfileComponentView: React.FC<{ cartCount: number }> = ({
+  cartCount,
+}) => {
   const userDetails = useAppSelector(getUserDetails);
 
   const router = useRouter();
@@ -44,7 +46,7 @@ const NavProfileComponentView = () => {
       <div className="flex flex-row gap-4 items-center">
         <SearchIcon />
         <HeartIcon />
-        <Badge>
+        <Badge number={cartCount}>
           <CartIcon />
         </Badge>
         <div

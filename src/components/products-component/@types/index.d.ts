@@ -8,4 +8,5 @@ interface iProductTypes {
 interface iProductsViewProps {
   readonly products: any;
   handleOnBuyProducts(_productId: string): void;
+  handleAddProductOnCart(_productId: string): void;
 }

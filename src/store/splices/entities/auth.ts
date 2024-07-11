@@ -1,6 +1,6 @@
 import { createSelector, createSlice, current } from "@reduxjs/toolkit";
 import { setUserLocalStorage } from "@service/localStorageService";
-import { AppDispatch } from "@store/configure-store";
+import { AppDispatch, AppState } from "@store/configure-store";
 
 const authReducerSlice = createSlice({
   name: "auth",
@@ -48,7 +48,7 @@ const authReducerSlice = createSlice({
       auth.token = userData.token;
       auth.refresh_token = userData.refresh_token;
 
-      // setUserLocalStorage(userData);
+      setUserLocalStorage(userData);
 
       // auth.first_name = payload.first_name;
       // auth.last_name = payload.last_name;
