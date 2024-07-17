@@ -19,7 +19,6 @@ const generateVariableMessage = (
     const path = variable.replace("{", "").replace("}", "");
     message = message.replace(variable, objectUtils.byPath(path, object));
   }
-
   return message;
 };
 

@@ -1,6 +1,8 @@
 "use client";
 import useToGetUserIsAuthenticated from "@utils/user-authenticated-status";
-import React from "react";
+import React, { useCallback } from "react";
+import { toast } from "react-toastify";
+import { DYNAMICS_CONSTANTS } from "src/resources/constants";
 import CartIcon from "src/resources/icons/cart-icon";
 
 const CardsView: React.FC<iCardsViewParams> = ({
@@ -15,6 +17,14 @@ const CardsView: React.FC<iCardsViewParams> = ({
   onClickCart = (f: string) => f,
 }) => {
   const isLoggedIn = useToGetUserIsAuthenticated();
+  const handleToastNotification = useCallback((type: string) => {
+    switch (type) {
+      case "cart": {
+        toast.info(DYNAMICS_CONSTANTS.ADD_TO_CART_LOGIN_TXT);
+        break;
+      }
+    }
+  }, []);
   return (
     <div className="cursor-pointer">
       {children}
@@ -37,8 +47,12 @@ const CardsView: React.FC<iCardsViewParams> = ({
           </button>
           {isCartNeed && (
             <button
-              onClick={!isLoggedIn ? () => {} : () => onClickCart(productId)}
-              className={`${!isLoggedIn ? "opacity-75" : "opacity-100"} flex items-center bg-[#FF914D] text-white rounded-full px-6 py-1 font-700 text-sm mt-3`}
+              onClick={
+                !isLoggedIn
+                  ? () => handleToastNotification("cart")
+                  : () => onClickCart(productId)
+              }
+              className={`flex items-center bg-[#FF914D] text-white rounded-full px-6 py-1 font-700 text-sm mt-3`}
             >
               Add to cart + <CartIcon width={15} height={15} color="#fff" />
             </button>

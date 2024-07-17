@@ -7,7 +7,8 @@ import {
   callToGetAllProducts,
   getAllProducts,
 } from "@store/splices/entities/products";
-import { updateCartItem } from "@store/splices/entities/cart";
+import { apiToCallAddToCart } from "@store/splices/entities/cart";
+// import { updateCartItem } from "@store/splices/entities/cart";
 
 const useProductsComponentController = () => {
   const products = useAppSelector(getAllProducts);
@@ -21,7 +22,7 @@ const useProductsComponentController = () => {
   }, []);
 
   const handleAddProductOnCart = useCallback((productId: string) => {
-    dispatch(updateCartItem(productId));
+    dispatch(apiToCallAddToCart({ productId, quantity: 1 }));
   }, []);
 
   const handleOnBuyProducts = useCallback((productId: string) => {

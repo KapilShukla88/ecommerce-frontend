@@ -26,6 +26,7 @@ function UICheckbox(props: IUICheckboxProps) {
         type="checkbox"
         name={props.name}
         id={props.id}
+        value={props.id}
         className={props.className ? props.className : `w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600 ${props.appendClassName || ""} `}
         placeholder={props.placeholder}
         required={props.required}

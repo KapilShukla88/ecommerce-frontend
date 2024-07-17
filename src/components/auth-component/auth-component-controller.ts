@@ -5,6 +5,7 @@ import { useAppDispatch } from "@store/configure-store";
 import { updateLoginResponse } from "@store/splices/entities/auth";
 import { useCallback, useState } from "react";
 import { localStorageServiceGet } from "@service/localStorageService";
+import { toast } from "react-toastify";
 
 const authConstant = [
   {
@@ -64,7 +65,7 @@ const useAuthComponentController = () => {
           HttpMethod.POST,
           loginPayload,
           false,
-          { success: "Hi {user.name}! Welcome back!", default: true },
+          { success: "Hi {first_name}! Welcome back!", default: true },
           "/auth/login"
         );
         if (response.success) {

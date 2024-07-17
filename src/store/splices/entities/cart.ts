@@ -4,7 +4,10 @@ import {
   localStorageServiceSet,
   setUserLocalStorage,
 } from "@service/localStorageService";
-import { AppDispatch } from "@store/configure-store";
+import { AppDispatch, AppState } from "@store/configure-store";
+import { apiCallBegan } from "@store/middlewares/api-middleware-actions";
+import { toast } from "react-toastify";
+import { DYNAMICS_CONSTANTS } from "src/resources/constants";
 
 /**
  * {
@@ -20,70 +23,129 @@ import { AppDispatch } from "@store/configure-store";
 const cartSlice = createSlice({
   name: "cart",
   initialState: <any>{
-    localCartData: JSON.parse(localStorageServiceGet("@cartsData", "{}")),
+    cartData: [], // localStorageServiceGet("@cartsData", "{}") ? JSON.parse(localStorageServiceGet("@cartsData", "{}")) : {},
+    totalCount: 0,
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo") as any)
+      : {},
   },
   reducers: {
-    addToCartReducers: (cart, { payload }) => {
-      // let cartItems = [];
-      // if (Object.keys(cart.localCartData).length > 0) {
-      //   cart.localCartData.count = cart.localCartData.count + 1;
+    startAddToCartApi: (cart, { payload }) => {},
+    addToCartResponse: (cart, { payload }) => {
+      cart.totalCount = payload?.data.total_count || 0;
 
-      //   localStorage.removeItem("@cartsData");
-      //   cartItems = cart.localCartData.cartItems;
-      //   console.log("cartitems ==>>", current(cartItems), payload);
-      //   let findItem = cartItems?.filter(
-      //     (cart: any) => cart.productId === payload
-      //   );
-      //   let newCartObject = {};
-      //   if (findItem[0]?.productId === payload) {
-      //     cartItems = cartItems.filter(
-      //       (cart: any) => cart.productId !== payload
-      //     );
+      if (payload?.data?.cart_items) {
+        cart.cartData = payload?.data?.cart_items;
+      }
+      // toast.success(DYNAMICS_CONSTANTS.ADDED_TO_CART);
+    },
+    addToCartError: (cart, { payload }) => {},
+    startToDeleteCart: (cart, { payload }) => {},
+    cartDeleteResponse: (cart, { payload }) => {
+      const { data, reducerData } = payload;
 
-      //     findItem[0].no_of_times_added = findItem[0].no_of_times_added + 1;
-      //     //   cartItems.push(findItem[0]);
-      //     newCartObject = findItem[0];
-      //   } else {
-      //     newCartObject = {
-      //       productId: payload,
-      //       no_of_times_added: 1,
-      //     };
-      //   }
-      //   cartItems = [...cartItems, newCartObject];
+      cart.totalCount = data?.total_count;
 
-      //   const cartObject = {
-      //     count: cart.localCartData.count,
-      //     cartItems: cartItems,
-      //   };
-      //   cart.localCartData = cartObject;
-      //   localStorageServiceSet("@cartsData", cartObject);
-      // } else {
-      //   const cartItemObject = {
-      //     productId: payload,
-      //     no_of_times_added: 1,
-      //   };
-      //   const cartObject = {
-      //     count: 1,
-      //     cartItems: [cartItemObject],
-      //   };
-      //   cartItems.push(cartItemObject);
-      //   cart.localCartData = cartObject;
-      //   localStorageServiceSet("@cartsData", cartObject);
-      // }
+      if (reducerData?.productId) {
+        cart.cartData = cart.cartData.filter(
+          (item: any) => item?.product?._id !== reducerData?.productId
+        );
+      }
+    },
+    cartDeleteError: (cart, { payload }) => {},
+    addShippingInfo: (cart, { payload }) => {
+      cart.shippingInfo = payload;
+      localStorage.setItem("shippingInfo", JSON.stringify(payload));
     },
   },
 });
 
-export const { addToCartReducers } = cartSlice.actions;
+export const {
+  startAddToCartApi,
+  addToCartResponse,
+  addToCartError,
+  startToDeleteCart,
+  cartDeleteResponse,
+  cartDeleteError,
+  addShippingInfo,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
 
-export const updateCartItem =
+export const apiToCallAddToCart = (data: any) => (dispatch: AppDispatch) => {
+  return dispatch({
+    type: apiCallBegan.type,
+    payload: {
+      url: "/cart",
+      method: "POST",
+      onStart: startAddToCartApi.type,
+      onSuccess: addToCartResponse.type,
+      onError: addToCartError.type,
+      data,
+      auth: true,
+    },
+  });
+};
+
+export const apiToGetAllCartData = () => (dispatch: AppDispatch) => {
+  return dispatch({
+    type: apiCallBegan.type,
+    payload: {
+      url: "/cart",
+      method: "GET",
+      onStart: startAddToCartApi.type,
+      onSuccess: addToCartResponse.type,
+      onError: addToCartError.type,
+      auth: true,
+    },
+  });
+};
+
+export const getCartTotalCount = () => (dispatch: AppDispatch) => {
+  return dispatch({
+    type: apiCallBegan.type,
+    payload: {
+      url: "/cart/cart-count",
+      method: "GET",
+      onStart: startAddToCartApi.type,
+      onSuccess: addToCartResponse.type,
+      onError: addToCartError.type,
+      auth: true,
+    },
+  });
+};
+
+export const deleteCartItem =
   (productId: string) => (dispatch: AppDispatch) => {
-    return dispatch({ type: addToCartReducers.type, payload: productId });
+    return dispatch({
+      type: apiCallBegan.type,
+      payload: {
+        url: `/cart/${productId}`,
+        method: "DELETE",
+        reducerData: { productId },
+        onStart: startToDeleteCart.type,
+        onSuccess: cartDeleteResponse.type,
+        onError: cartDeleteError.type,
+        auth: true,
+      },
+    });
   };
+
+export const updateShippingInfo = (info: any) => (dispatch: AppDispatch) => {
+  return dispatch({ type: addShippingInfo.type, payload: info });
+};
 
 export const getCartCount = createSelector(
   (state: any) => state.entities.cart,
-  (cart: any) => cart?.localCartData?.count || 0
+  (cart) => cart?.totalCount || 0
+);
+
+export const getCartData = createSelector(
+  (state: AppState) => state.entities.cart,
+  (cart) => cart?.cartData || []
+);
+
+export const getShippingInfo = createSelector(
+  (state: AppState) => state.entities.cart,
+  (items) => items?.shippingInfo || {}
 );

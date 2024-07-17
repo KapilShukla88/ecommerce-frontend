@@ -12,7 +12,12 @@ const AuthGuard: React.FC<any> = ({ children }) => {
     if (user) {
       const userData = JSON.parse(user);
       if (userData.isLoggedIn) {
-        dispatch(updateLoginResponse(userData));
+        const payload = {
+          ...userData,
+          refreshToken: userData.refresh_token || "",
+          accessToken: userData?.token || "",
+        };
+        dispatch(updateLoginResponse(payload));
       }
     }
   }, []);

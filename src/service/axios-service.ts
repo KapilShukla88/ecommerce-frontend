@@ -3,6 +3,7 @@ import {
   getLocalStorage,
   localStorageServiceGet,
   localStorageServiceSet,
+  setUserLocalStorage,
 } from "./localStorageService";
 import { API_USER_LOGIN, BASE_URL } from "src/resources/api-end-points";
 import { eventBus } from "./eventService";
@@ -16,10 +17,17 @@ const refreshApiHandler = () => {
   if (refreshApiCall) {
     return refreshApiCall;
   } else {
-    let request = createRequest("/refreshToken", "GET", {
-      strategy: "refresh_token",
-      refresh_token: getLocalStorage("refresh_token"),
-    }, getLocalStorage("refresh_token"));
+    let request = createRequest(
+      "/refreshToken",
+      "POST",
+      {
+        strategy: "refresh_token",
+        refresh_token: getLocalStorage("refresh_token"),
+      },
+      getLocalStorage("token"),
+      false
+    );
+
     refreshApiCall = axios.request(request);
   }
   return refreshApiCall;
@@ -34,9 +42,9 @@ const handleRefreshToken = async (error: any) => {
     /**
      * update user Token / Saved
      */
-    const user = { ...(localStorageServiceGet("user") as any) };
+    const user = { ...JSON.parse(localStorageServiceGet("user") as any) };
     user.token = token;
-    localStorageServiceSet("user", user);
+    setUserLocalStorage(user);
 
     let data;
     if (
@@ -51,10 +59,13 @@ const handleRefreshToken = async (error: any) => {
       error.response.config.url,
       error.response.config.method,
       data,
-      token
+      token,
+      false
     );
     return axios(updateRequest);
   } catch (error: any) {
+    console.log("error =>>", error);
+
     if (error?.response?.status === 498) {
       eventBus.dispatch(EVENT_BUS_OAUTH_LOGOUT, { logout: true });
     }

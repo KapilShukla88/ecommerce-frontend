@@ -1,8 +1,9 @@
 import StarRatingComponent from "@components/star-rating-component";
-import React from "react";
+import React, { useCallback } from "react";
 
 import StarIcon from "src/resources/icons/star-icon";
 import UIButton from "src/widgets/ui-button";
+import UIModal from "src/widgets/ui-modal";
 
 const borderClassName = " border-b-[1.5px] border-t-[1.5px] border-gray-300";
 
@@ -11,17 +12,103 @@ interface iProductIntroComponentViewParams {
   productDetails: any;
   productId: string;
   isLoggedIn: boolean;
+  starPosition: number;
+  comment: string;
+  isReviewModalOpen: boolean;
   handleOnDecreaseProducts(): void;
   handleOnIncreaseProducts(): void;
+  handleOnHoverStar(_: number): void;
+  handleOnChangeComment(_: string): void;
+  toggleReviewModal(): void;
+  onSubmitReview(_productId: string): void;
+  handleAddToCart(_productId: string): void;
+  handleToastNotification(_type: string): void;
 }
+
+const SubmitReviewComponent = ({
+  starPosition,
+  comment = "",
+  handleOnHoverStar,
+  handleOnChangeComment,
+  isReviewModalOpen,
+  toggleReviewModal,
+  onClick,
+}: any) => {
+  const handleComment = useCallback(
+    (value: string) => {
+      if (comment?.length >= 200) {
+        return;
+      }
+      handleOnChangeComment(value);
+    },
+    [comment, handleOnChangeComment]
+  );
+  return (
+    <UIModal
+      backdrop={toggleReviewModal}
+      onHide={toggleReviewModal}
+      isOpen={isReviewModalOpen}
+      headerTitle="Submit Review"
+      header={true}
+    >
+      <div>
+        <div className="flex gap-1 items-center">
+          {[1, 2, 3, 4, 5]?.map((starsNumber: number, index: number) => {
+            return (
+              <div
+                key={index}
+                // onMouseOver={() => handleOnHoverStar(starsNumber)}
+                // onMouseLeave={() => handleOnHoverStar(0)}
+                onClick={() => handleOnHoverStar(starsNumber)}
+                className="cursor-pointer"
+              >
+                <StarIcon
+                  width={24}
+                  height={24}
+                  color={starPosition >= starsNumber ? "#FF914D" : "#C7C8CC"}
+                />
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-4 border-[1px] rounded-md border-gray-400 p-1">
+          <textarea
+            rows={5}
+            placeholder="Enter you comment"
+            maxLength={200}
+            onChange={(e: any) => handleComment(e.target.value)}
+            className="resize-none w-full outline-none focus:ring-0 border-none focus:border-none "
+          />
+          <p className="text-xs font-medium my-1 text-black text-end">
+            {comment?.length}/200
+          </p>
+        </div>
+        <UIButton
+          text="Submit"
+          className="bg-blue-600 text-white font-medium text-base mt-3 py-2 px-4 rounded-md"
+          onClick={onClick}
+        />
+      </div>
+    </UIModal>
+  );
+};
 
 const ProductIntroComponentView: React.FC<iProductIntroComponentViewParams> = ({
   noOfProducts = 0,
   productId = "",
   productDetails = {},
   isLoggedIn = false,
+  starPosition = 0,
+  comment = "",
+  isReviewModalOpen = false,
   handleOnDecreaseProducts,
   handleOnIncreaseProducts,
+  handleOnHoverStar = (f: number) => f,
+  handleOnChangeComment = (f: string) => f,
+  toggleReviewModal = () => {},
+  onSubmitReview,
+  handleAddToCart,
+  handleToastNotification = (_: string) => _,
 }) => {
   return (
     <div className="w-full">
@@ -69,11 +156,13 @@ const ProductIntroComponentView: React.FC<iProductIntroComponentViewParams> = ({
             />
           </div>
           <UIButton
-            onClick={!isLoggedIn ? () => {} : () => {}}
+            onClick={
+              !isLoggedIn
+                ? () => handleToastNotification("cart")
+                : () => handleAddToCart(productDetails?._id)
+            }
             text="Add to cart"
-            className={`${
-              !isLoggedIn ? "opacity-75" : "opacity-100"
-            } text-white m-0 bg-[#FF914D] px-4 py-1 pb-2 rounded-full`}
+            className={` text-white m-0 bg-[#FF914D] px-4 py-1 pb-2 rounded-full`}
           />
         </div>
         <div className={`flex items-center gap-1 py-2 ${borderClassName} mt-4`}>
@@ -92,12 +181,25 @@ const ProductIntroComponentView: React.FC<iProductIntroComponentViewParams> = ({
             <p className="text-md">{productDetails?.description || ""}</p>
           </div>
           <UIButton
-            onClick={() => {}}
+            onClick={
+              !isLoggedIn
+                ? () => handleToastNotification("review")
+                : toggleReviewModal
+            }
             text="Submit Review"
             className="text-white m-0 bg-[#FF914D] px-6 py-1 pb-2 rounded-full max-w-fit"
           />
         </div>
       </div>
+      <SubmitReviewComponent
+        handleOnHoverStar={handleOnHoverStar}
+        starPosition={starPosition}
+        comment={comment}
+        isReviewModalOpen={isReviewModalOpen}
+        toggleReviewModal={toggleReviewModal}
+        handleOnChangeComment={handleOnChangeComment}
+        onClick={() => onSubmitReview(productDetails?._id)}
+      />
     </div>
   );
 };

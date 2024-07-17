@@ -56,7 +56,6 @@ async function HttpService<T>(
     auth ? (getLocalStorage("token") as any) : null,
     auth
   );
-
   try {
     if (
       !messageConfig?.default &&
@@ -79,10 +78,11 @@ async function HttpService<T>(
               const messageVariables = stringUtils.getVariables(
                 messageConfig.success
               );
+
               if (!messageVariables || messageVariables.length === 0)
                 return messageConfig.success;
               return stringUtils.generateVariableMessage(
-                data?.data,
+                data?.data?.data,
                 messageVariables,
                 messageConfig.success
               );

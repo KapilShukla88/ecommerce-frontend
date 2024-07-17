@@ -1,45 +1,69 @@
+
+export const PRODUCT_CATEGORY = {
+  SNEAKER: "sneaker",
+  TSHIRT: "tshirt",
+  SHIRT: "shirt",
+  CAMERA: "camera",
+  PHONE: "phone",
+  HEADPHONE: "headphone",
+}; 
+
 export const categories = [
   {
-    id: "footwear",
-    name: "Footwear",
+    id: PRODUCT_CATEGORY.SNEAKER,
+    name: "Sneakers",
   },
   {
-    id: "clothes",
-    name: "Clothes",
+    id: PRODUCT_CATEGORY.TSHIRT,
+    name: "T-Shirt",
   },
   {
-    id: "shoes",
-    name: "Shoes",
+    id: PRODUCT_CATEGORY.SHIRT,
+    name: "Shirt",
   },
   {
-    id: "headphones",
-    name: "Head Phones",
+    id: PRODUCT_CATEGORY.PHONE,
+    name: "Mobile Phones",
   },
+  {
+    id: PRODUCT_CATEGORY.HEADPHONE,
+    name: "Headphone"
+  }
 ];
+
+
+export const PRODUCT_BRAND = {
+  PUMA: "puma",
+  ADDIDAS: "addidas",
+  SONY: "sony",
+  NIKE: "nike",
+  APPLE: "apple",
+  SAMSUNG: "samsung"
+};
 
 export const brands = [
     {
-        id: "puma",
+        id: PRODUCT_BRAND.PUMA,
         name: "Puma"
     },
     {
-        id: "adidas",
-        name: "Adidas"
+        id: PRODUCT_BRAND.ADDIDAS,
+        name: "Addidas"
     },
     {
-        id: "noise",
-        name: "Noise"
+        id: PRODUCT_BRAND.SONY,
+        name: "Sony"
     },
     {
-        id: "oneplus",
-        name: "OnePlus"
+        id: PRODUCT_BRAND.NIKE,
+        name: "Nike"
     },
     {
-        id: "samsung",
-        name: "Samsung"
+        id: PRODUCT_BRAND.APPLE,
+        name: "Apple"
     },
     {
-        id: "apple",
-        name :"Apple"
+        id: PRODUCT_BRAND.SAMSUNG,
+        name :"Samsung"
     }
 ]

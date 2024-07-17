@@ -18,6 +18,7 @@ const authReducerSlice = createSlice({
   reducers: {
     setAuthenticatedResponse: (auth: iUser, { payload }) => {
       // setLocalStorage("isLoggedIn", payload);
+
       const {
         first_name,
         last_name,

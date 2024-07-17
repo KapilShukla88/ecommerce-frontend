@@ -46,9 +46,11 @@ const NavProfileComponentView: React.FC<{ cartCount: number }> = ({
       <div className="flex flex-row gap-4 items-center">
         <SearchIcon />
         <HeartIcon />
-        <Badge number={cartCount}>
-          <CartIcon />
-        </Badge>
+        <div onClick={() => router.push("/cart")} className="cursor-pointer">
+          <Badge number={cartCount}>
+            <CartIcon />
+          </Badge>
+        </div>
         <div
           className="flex items-center gap-1 cursor-pointer"
           onClick={userDetails?.isLoggedIn ? () => {} : handleOnClickAvatar}

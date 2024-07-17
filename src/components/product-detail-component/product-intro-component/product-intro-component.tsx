@@ -9,8 +9,17 @@ const ProductIntroComponent: React.FC<{
   const {
     noOfProduct,
     isLoggedIn,
+    starPosition,
+    comment,
+    isReviewModalOpen,
     handleOnDecreaseProducts,
     handleOnIncreaseProducts,
+    handleOnHoverStar,
+    handleOnChangeComment,
+    toggleReviewModal,
+    onSubmitReview,
+    handleAddToCart,
+    handleToastNotification,
   } = useProductIntroComponentController(productDetails?.stock || 0);
   return (
     <ProductIntroComponentView
@@ -18,8 +27,17 @@ const ProductIntroComponent: React.FC<{
       productDetails={productDetails}
       productId={productId}
       isLoggedIn={isLoggedIn}
+      starPosition={starPosition}
+      comment={comment}
+      isReviewModalOpen={isReviewModalOpen}
       handleOnDecreaseProducts={handleOnDecreaseProducts}
       handleOnIncreaseProducts={handleOnIncreaseProducts}
+      handleOnHoverStar={handleOnHoverStar}
+      handleOnChangeComment={handleOnChangeComment}
+      toggleReviewModal={toggleReviewModal}
+      onSubmitReview={onSubmitReview}
+      handleAddToCart={handleAddToCart}
+      handleToastNotification={handleToastNotification}
     />
   );
 };

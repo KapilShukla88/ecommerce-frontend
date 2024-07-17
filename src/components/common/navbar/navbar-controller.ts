@@ -1,12 +1,13 @@
 "use client";
-import { useAppSelector } from "@store/configure-store";
-import { getCartCount } from "@store/splices/entities/cart";
+import { useAppDispatch, useAppSelector } from "@store/configure-store";
+import { getCartCount, getCartTotalCount } from "@store/splices/entities/cart";
 import { useEffect, useState } from "react";
 
 const useNavbarController = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   const cartCount = useAppSelector(getCartCount);
+  const dispatch = useAppDispatch();
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
@@ -16,6 +17,10 @@ const useNavbarController = () => {
       setIsScrolled(false);
     }
   };
+
+  useEffect(() => {
+    dispatch(getCartTotalCount());
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

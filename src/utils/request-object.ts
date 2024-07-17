@@ -1,3 +1,5 @@
+import { getLocalStorage } from "@service/localStorageService";
+
 const hasher = require("hash.js/lib/hash/sha/256");
 
 const xUserAgent = hasher()
@@ -25,15 +27,16 @@ export const createRequest = (
   };
 
   if (token) {
-    request.headers.authorization = AUTH_TOKEN_PREFIX + token;
+    request.headers.authorization = token;
   }
 
   let urlHash = hasher().update(JSON.stringify(request)).digest("hex");
 
   request.headers["x-hash"] = urlHash;
 
-  // if (auth)
-  //   request.headers["authorization"] = "Bearer " + getLocalStorage("token");
+  if (auth){
+    request.headers["authorization"] = getLocalStorage("token");
+  }
   request.data = data;
   return request;
 };

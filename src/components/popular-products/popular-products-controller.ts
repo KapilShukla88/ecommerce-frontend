@@ -1,7 +1,8 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@store/configure-store";
-import { updateCartItem } from "@store/splices/entities/cart";
+import { apiToCallAddToCart } from "@store/splices/entities/cart";
+// import { updateCartItem } from "@store/splices/entities/cart";
 import {
   callToGetAllPopularProducts,
   getAllPopularProducts,
@@ -25,7 +26,7 @@ const usePopularProductsController = () => {
   }, []);
 
   const handleOnAddToCartProduct = useCallback((productId: string) => {
-    dispatch(updateCartItem(productId));
+    dispatch(apiToCallAddToCart({ productId, quantity: 1 }));
   }, []);
 
   return {

@@ -2,6 +2,7 @@ import StarRatingComponent from "@components/star-rating-component";
 import Image from "next/image";
 import React from "react";
 import StarIcon from "src/resources/icons/star-icon";
+import UIModal from "src/widgets/ui-modal";
 
 const DEFAULT_IMAGE =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ut5ImIGij7xxSShxWk-uyCJbjkIdLYpTWNJTJTFnPA&s";
@@ -40,7 +41,6 @@ const ProductReviewComponentView: React.FC<{ reviews: any }> = ({
       <div className="mt-10">
         <div className="flex gap-2 flex-wrap">
           {reviews?.map((review: any) => {
-            console.log("review?.rating =>>", review?.rating);
             return (
               <ReviewsCard
                 key={review?._id}

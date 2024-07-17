@@ -8,7 +8,7 @@ import RangeSlider from "src/widgets/ui-range-slider";
  *
  * @returns the ui of the categories filter component - it is use to filter out products based on the categories
  */
-const CategoriesFilterComponent = () => {
+const CategoriesFilterComponent = ({ handleTheFilters }: any) => {
   return (
     <div className="p-2">
       <div>
@@ -17,7 +17,13 @@ const CategoriesFilterComponent = () => {
           {categories?.map((category) => {
             return (
               <div className="flex gap-2 items-center" key={category?.id}>
-                <UICheckbox name={category?.name} id={category?.id} />
+                <UICheckbox
+                  name={category?.name}
+                  id={category?.id}
+                  onChange={(value: string) =>
+                    handleTheFilters("categories", value)
+                  }
+                />
                 <p>{category?.name}</p>
               </div>
             );
@@ -32,7 +38,7 @@ const CategoriesFilterComponent = () => {
  *
  * @returns the ui of the brands filter component - it is use to filter out products based on the brands
  */
-const BrandsFilterComponent = () => {
+const BrandsFilterComponent = ({ handleTheFilters }: any) => {
   return (
     <div className="p-2">
       <div>
@@ -41,7 +47,13 @@ const BrandsFilterComponent = () => {
           {brands?.map((brand) => {
             return (
               <div className="flex gap-2 items-center" key={brand?.id}>
-                <UICheckbox name={brand?.name} id={brand?.id} />
+                <UICheckbox
+                  name={brand?.name}
+                  id={brand?.id}
+                  onChange={(value: string) =>
+                    handleTheFilters("brands", value)
+                  }
+                />
                 <p>{brand?.name}</p>
               </div>
             );
@@ -69,18 +81,49 @@ const RangeFilterComponent = ({
   );
 };
 
-const PriceFilterComponent = () => {
+const PriceFilterComponent = ({ handleTheFilters }: any) => {
   const priceTextClassName = "hover:text-[#FF914D] cursor-pointer min-w-max";
   return (
     <div className="p-2">
       <div>
         <p className="text-md font-semibold">Price</p>
         <div className="ml-2">
-          <p className={priceTextClassName}>Under ₹1000</p>
-          <p className={priceTextClassName}>₹1000 - ₹5000</p>
-          <p className={priceTextClassName}>₹5000 - ₹10000</p>
-          <p className={priceTextClassName}>₹10000 - ₹20000</p>
-          <p className={priceTextClassName}>Above ₹20000</p>
+          <p
+            className={priceTextClassName}
+            onClick={() => handleTheFilters({ highPrice: 1000 })}
+          >
+            Under ₹1000
+          </p>
+          <p
+            className={priceTextClassName}
+            onClick={() =>
+              handleTheFilters({ lowPrice: 1000, highPrice: 5000 })
+            }
+          >
+            ₹1000 - ₹5000
+          </p>
+          <p
+            className={priceTextClassName}
+            onClick={() =>
+              handleTheFilters({ lowPrice: 5000, highPrice: 10000 })
+            }
+          >
+            ₹5000 - ₹10000
+          </p>
+          <p
+            className={priceTextClassName}
+            onClick={() =>
+              handleTheFilters({ lowPrice: 10000, highPrice: 20000 })
+            }
+          >
+            ₹10000 - ₹20000
+          </p>
+          <p
+            className={priceTextClassName}
+            onClick={() => handleTheFilters({ lowPrice: 20000 })}
+          >
+            Above ₹20000
+          </p>
         </div>
       </div>
     </div>
@@ -96,17 +139,19 @@ const PriceFilterComponent = () => {
 const SidebarView: React.FC<any> = ({
   priceRangeValue = 0,
   handleOnChangePriceRange = (f: any) => f,
+  handleTheFilters,
+  handlePriceFilter,
 }) => {
   return (
     <div className="w-1/5 p-2 border-r-2 overflow-y-auto">
       <h2 className="text-2xl font-semibold">Filter Products</h2>
-      <CategoriesFilterComponent />
-      <BrandsFilterComponent />
+      <CategoriesFilterComponent handleTheFilters={handleTheFilters} />
+      <BrandsFilterComponent handleTheFilters={handleTheFilters} />
       {/* <RangeFilterComponent
         priceRangeValue={priceRangeValue}
         handleOnChangePriceRange={handleOnChangePriceRange}
       /> */}
-      <PriceFilterComponent />
+      <PriceFilterComponent handleTheFilters={handlePriceFilter} />
     </div>
   );
 };

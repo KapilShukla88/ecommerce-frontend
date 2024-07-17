@@ -2,6 +2,8 @@ import { createSelector, createSlice, current } from "@reduxjs/toolkit";
 import { setUserLocalStorage } from "@service/localStorageService";
 import { AppDispatch, AppState } from "@store/configure-store";
 import { apiCallBegan } from "@store/middlewares/api-middleware-actions";
+import { toast } from "react-toastify";
+import { DYNAMICS_CONSTANTS } from "src/resources/constants";
 
 interface iProductParams {
   popularProducts: any;
@@ -32,6 +34,17 @@ const productSlice = createSlice({
       product.productDetails = payload.data;
     },
     errorToGetProductDetails: (product, { payload }) => {},
+    addReviewStart: (product, { payload }) => {},
+    submittedReviewResponse: (product, { payload }) => {
+      const response = payload?.data;
+      if (response) {
+        if (product.productDetails?._id === response?._id) {
+          product.productDetails.reviews = response.reviews;
+        }
+      }
+      toast.success(DYNAMICS_CONSTANTS.REVIEW_SUBMITTED);
+    },
+    errorOnSubmitNewReview: (product, { payload }) => {},
   },
 });
 
@@ -45,6 +58,9 @@ const {
   startToGetProductDetails,
   productDetailResponseReducer,
   errorToGetProductDetails,
+  addReviewStart,
+  submittedReviewResponse,
+  errorOnSubmitNewReview,
 } = productSlice.actions;
 
 export default productSlice.reducer;
@@ -63,19 +79,20 @@ export const callToGetAllPopularProducts = () => (dispatch: AppDispatch) => {
   });
 };
 
-export const callToGetAllProducts = () => (dispatch: AppDispatch) => {
-  return dispatch({
-    type: apiCallBegan.type,
-    payload: {
-      url: "/products",
-      method: "GET",
-      onStart: allProductsStart.type,
-      onSuccess: allProductsResponseReducer.type,
-      onError: allProductApiError.type,
-      auth: false,
-    },
-  });
-};
+export const callToGetAllProducts =
+  (query?: string) => (dispatch: AppDispatch) => {
+    return dispatch({
+      type: apiCallBegan.type,
+      payload: {
+        url: query ? `/products?${query}` : "/products",
+        method: "GET",
+        onStart: allProductsStart.type,
+        onSuccess: allProductsResponseReducer.type,
+        onError: allProductApiError.type,
+        auth: false,
+      },
+    });
+  };
 
 export const callToGetProductDetail =
   (productId: string) => (dispatch: AppDispatch) => {
@@ -88,6 +105,22 @@ export const callToGetProductDetail =
         onSuccess: productDetailResponseReducer.type,
         onError: errorToGetProductDetails.type,
         auth: false,
+      },
+    });
+  };
+
+export const callToSubmitReview =
+  (data: any, productId: string) => (dispatch: AppDispatch) => {
+    return dispatch({
+      type: apiCallBegan.type,
+      payload: {
+        url: `/products/review/${productId}`,
+        method: "POST",
+        onStart: addReviewStart.type,
+        onSuccess: submittedReviewResponse.type,
+        onError: errorOnSubmitNewReview.type,
+        data: data,
+        auth: true,
       },
     });
   };
