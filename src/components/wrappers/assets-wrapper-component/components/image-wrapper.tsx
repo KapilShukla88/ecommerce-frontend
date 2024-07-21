@@ -17,7 +17,7 @@ const ImageWrapper: React.FC<iImageWrapperComponentProps> = ({
 }) => {
   return (
     <Link href={slug}>
-      <Image src={imgUrl} alt={alt} fill />
+      <Image src={imgUrl} alt={alt} fill sizes="(max-width: 768px) auto, (max-width: 1200px) auto" />
     </Link>
   );
 };

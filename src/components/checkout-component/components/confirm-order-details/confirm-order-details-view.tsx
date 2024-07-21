@@ -12,6 +12,7 @@ const ConfirmOrderDetailsView: React.FC<any> = ({
   address,
   phoneNo,
   userName,
+  onProceedPayment,
 }) => {
   return (
     <div className="h-screen bg-white grid grid-cols-[6fr_3fr]">
@@ -86,7 +87,9 @@ const ConfirmOrderDetailsView: React.FC<any> = ({
             </div>
             <div className="flex text-[1vmax] justify-between my-[2vmax] mx-0">
               <p>GST:</p>
-              <span className="text-[rgba(0,0,0,0.692)]">Rs.{tax?.toFixed(2)}</span>
+              <span className="text-[rgba(0,0,0,0.692)]">
+                Rs.{tax?.toFixed(2)}
+              </span>
             </div>
           </div>
           <div className="flex text-[1vmax]  justify-between border-t-[1px] border-t-[rgba(0,0,0,0.363)] py-[2vmax] px-0">
@@ -98,7 +101,7 @@ const ConfirmOrderDetailsView: React.FC<any> = ({
           <UIButton
             text="Proceed To Payment"
             className="border-none bg-red-500 text-white text-[0.9vmax] cursor-pointer w-full rounded-md p-3"
-            onClick={() => {}}
+            onClick={onProceedPayment}
           />
         </div>
       </div>

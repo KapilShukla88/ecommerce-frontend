@@ -11,6 +11,7 @@ const FooterView: React.FC<{}> = () => {
             alt="finest deals"
             width={100}
             height={100}
+            style={{ width: "auto", height: "auto" }}
           />
         </div>
         <div className="flex gap-1">

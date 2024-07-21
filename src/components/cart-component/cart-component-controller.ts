@@ -35,11 +35,16 @@ const useCartComponentController = () => {
     router.push("/checkout");
   }, []);
 
+  const handleOrdersButton = useCallback(() => {
+    router.push("/orders");
+  }, []);
+
   return {
     cartData,
     totalPrice,
     handleOnDeleteCartItem,
     handleOnProceedToCheckout,
+    handleOrdersButton,
   };
 };
 

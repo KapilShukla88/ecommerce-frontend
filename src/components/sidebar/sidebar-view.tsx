@@ -1,7 +1,8 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import React from "react";
+import { brands, categories } from "src/resources/constants";
 import UICheckbox from "src/widgets/ui-checkbox";
-import { brands, categories } from "./configs/objects";
 import RangeSlider from "src/widgets/ui-range-slider";
 
 /**
@@ -142,6 +143,11 @@ const SidebarView: React.FC<any> = ({
   handleTheFilters,
   handlePriceFilter,
 }) => {
+  const params = useSearchParams();
+  const routeCategory = params.get("category");
+  if (routeCategory) {
+    return <></>;
+  }
   return (
     <div className="w-1/5 p-2 border-r-2 overflow-y-auto">
       <h2 className="text-2xl font-semibold">Filter Products</h2>

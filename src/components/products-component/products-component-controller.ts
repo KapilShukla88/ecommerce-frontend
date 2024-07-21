@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@store/configure-store";
 import {
@@ -17,8 +17,23 @@ const useProductsComponentController = () => {
 
   const dispatch = useAppDispatch();
 
+  const params = useSearchParams();
+  const routeCategory = params.get("category");
+
+  // useEffect(() => {
+  //   dispatch(callToGetAllProducts());
+  // }, []);
+
   useEffect(() => {
-    dispatch(callToGetAllProducts());
+    handleQueries(routeCategory);
+  }, [routeCategory]);
+
+  const handleQueries = useCallback((category: string | null) => {
+    let query = "";
+    if (category) {
+      query = `categories=["${category}"]`;
+    }
+    dispatch(callToGetAllProducts(query));
   }, []);
 
   const handleAddProductOnCart = useCallback((productId: string) => {

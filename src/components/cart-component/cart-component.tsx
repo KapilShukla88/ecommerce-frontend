@@ -9,6 +9,7 @@ const CartComponent: React.FC<{}> = () => {
     totalPrice,
     handleOnDeleteCartItem,
     handleOnProceedToCheckout,
+    handleOrdersButton
   } = useCartComponentController();
   return (
     <CartComponentView
@@ -16,6 +17,7 @@ const CartComponent: React.FC<{}> = () => {
       totalPrice={totalPrice}
       handleOnDeleteCartItem={handleOnDeleteCartItem}
       handleOnProceedToCheckout={handleOnProceedToCheckout}
+      handleOrdersButton={handleOrdersButton}
     />
   );
 };

@@ -8,6 +8,7 @@ interface iCartComponentViewParams {
   totalPrice: number;
   handleOnProceedToCheckout(): void;
   handleOnDeleteCartItem(_productId: string): void;
+  handleOrdersButton(): void;
 }
 
 const SummaryComponent = ({
@@ -15,7 +16,6 @@ const SummaryComponent = ({
   totalPrice,
   handleOnProceedToCheckout,
 }: any) => {
-  // const [prices , setPrices] = useState([]);
   return (
     <div className="rounded-md shadow-md p-2 flex flex-[0.3] bg-[#F2F2F2] h-96 overflow-y-auto">
       <div className="w-full flex flex-col">
@@ -112,7 +112,22 @@ const CartComponentView: React.FC<iCartComponentViewParams> = ({
   totalPrice = 0,
   handleOnDeleteCartItem = (f: string) => f,
   handleOnProceedToCheckout,
+  handleOrdersButton = () => {},
 }) => {
+  if (data?.length === 0) {
+    return (
+      <div className="h-screen justify-center flex items-center">
+        <div>
+          <p className="text-xl font-semibold">Cart is empty.</p>
+          <UIButton
+            text="Orders"
+            onClick={handleOrdersButton}
+            className="px-6 py-2 text-2xl text-white bg-red-500 rounded-md mt-4"
+          />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className=" flex justify-center p-4">
       <div className="md:w-2/3 flex gap-2">

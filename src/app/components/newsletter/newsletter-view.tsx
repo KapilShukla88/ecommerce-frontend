@@ -9,7 +9,13 @@ const NewsletterView: React.FC<{}> = () => {
     >
       <div className="flex items-center justify-center">
         <div className="flex flex-[0.5] justify-center items-center">
-          <Image src="/assets/e-commerce.gif" width={600} height={500} alt="" />
+          <Image
+            src="/assets/e-commerce.gif"
+            width={600}
+            height={500}
+            alt=""
+            style={{ width: "auto", height: "auto" }}
+          />
         </div>
         <div className="flex flex-col items-end justify-center flex-[0.5] h-full">
           <div className=" items-center flex flex-col gap-2">
@@ -25,7 +31,7 @@ const NewsletterView: React.FC<{}> = () => {
               <div className="py-1 h-10 w-[25rem] rounded-full bg-white px-3">
                 <input
                   placeholder="Your Email (required)"
-                  className=" h-full py-3 border-none outline-none focus:outline-none active:outline-none bg-transparent w-full"
+                  className=" h-full py-3 border-none outline-none focus:outline-none focus:border-none focus:ring-0 bg-transparent w-full"
                 />
               </div>
               <button

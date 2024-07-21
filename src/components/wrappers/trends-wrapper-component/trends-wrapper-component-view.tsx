@@ -30,7 +30,12 @@ const TrendsWrapperComponentView: React.FC<
     <div className="relative flex flex-1">
       <div className="overflow-hidden w-full relative ">
         <div className="relative h-[20rem] hover:scale-105 transition duration-700 ease-in-out ">
-          <Image src={imgUrl} fill alt={titleText} />
+          <Image
+            src={imgUrl}
+            fill
+            alt={titleText}
+            sizes="(max-width: 768px) 100vw, 20rem, (max-width: 1200px) 100vw, 20rem"
+          />
         </div>
         {/* <div className="flex flex-col items-start"> */}
 

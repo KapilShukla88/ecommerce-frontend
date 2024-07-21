@@ -10,7 +10,12 @@ const CardsCarousalComponentView: React.FC<
   return (
     <div className="relative">
       <div className="relative h-[20rem] rounded-md overflow-hidden">
-        <Image src={productImage} alt={altText} fill />
+        <Image
+          src={productImage}
+          alt={altText}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
+        />
       </div>
       <div className=" absolute inset-x-0 bottom-3 flex justify-center">
         <div className="flex gap-1 m-auto">

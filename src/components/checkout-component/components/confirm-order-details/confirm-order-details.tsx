@@ -12,6 +12,7 @@ const ConfirmOrderDetails: React.FC<{}> = () => {
     address,
     phoneNo,
     userName,
+    onProceedPayment,
   } = useConfirmOrderDetailsController();
   return (
     <ConfirmOrderDetailsView
@@ -23,6 +24,7 @@ const ConfirmOrderDetails: React.FC<{}> = () => {
       address={address}
       phoneNo={phoneNo}
       userName={userName}
+      onProceedPayment={onProceedPayment}
     />
   );
 };

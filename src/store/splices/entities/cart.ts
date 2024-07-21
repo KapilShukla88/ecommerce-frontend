@@ -25,8 +25,8 @@ const cartSlice = createSlice({
   initialState: <any>{
     cartData: [], // localStorageServiceGet("@cartsData", "{}") ? JSON.parse(localStorageServiceGet("@cartsData", "{}")) : {},
     totalCount: 0,
-    shippingInfo: localStorage.getItem("shippingInfo")
-      ? JSON.parse(localStorage.getItem("shippingInfo") as any)
+    shippingInfo: localStorageServiceGet("shippingInfo")
+      ? JSON.parse(localStorageServiceGet("shippingInfo") as any)
       : {},
   },
   reducers: {

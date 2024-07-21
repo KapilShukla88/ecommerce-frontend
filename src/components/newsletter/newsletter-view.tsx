@@ -1,7 +1,18 @@
-import Image from "next/image";
+"use client";
 import React from "react";
+import Image from "next/image";
 
-const NewsletterView: React.FC<{}> = () => {
+interface iNewsLetterViewParams {
+  email: string;
+  onSendEmail(_: any): void;
+  onChangeEmail(_: string): void;
+}
+
+const NewsletterView: React.FC<iNewsLetterViewParams> = ({
+  email = "",
+  onChangeEmail = (f: string) => f,
+  onSendEmail = () => {},
+}) => {
   return (
     <div
       style={{ backgroundImage: "url('/assets/news-letter-background.png')" }}
@@ -21,10 +32,16 @@ const NewsletterView: React.FC<{}> = () => {
               nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
               erat volutpat.
             </p>
-            <form className="flex items-center gap-3 mt-4">
+            <form
+              className="flex items-center gap-3 mt-4"
+              onSubmit={onSendEmail}
+            >
               <div className="py-1 h-10 md:w-[25rem] rounded-full bg-white px-3">
                 <input
                   placeholder="Your Email (required)"
+                  type="email"
+                  value={email}
+                  onChange={(e) => onChangeEmail(e.target.value)}
                   className=" h-full py-3 border-none outline-none focus:outline-none active:outline-none bg-transparent w-full"
                 />
               </div>

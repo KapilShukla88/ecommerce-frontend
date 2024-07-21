@@ -33,7 +33,12 @@ const ImagesSmallSlides = ({
               key={index}
               onClick={() => onClickSelectedImage(index)}
             >
-              <Image src={image?.url} alt={image?.alt_text} fill />
+              <Image
+                src={image?.url}
+                alt={image?.alt_text}
+                fill
+                sizes="(max-width: 768px) 7rem, (max-width: 1200px) 7rem"
+              />
             </div>
           );
         })}
@@ -45,7 +50,12 @@ const ProductImageComponent = ({ productImage, altText = "" }: any) => {
   return (
     <div className="relative">
       <div className="relative min-h-[30rem] max-h-[40rem] w-[30rem] rounded-md shadow-sm overflow-hidden">
-        <Image src={productImage} alt="" fill />
+        <Image
+          src={productImage}
+          alt=""
+          fill
+          sizes="(max-width: 768px) 30rem, 30rem, (max-width: 1200px) 30rem, 40rem"
+        />
       </div>
     </div>
   );

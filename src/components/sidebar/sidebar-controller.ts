@@ -14,7 +14,7 @@ const useSidebarController = () => {
   }, []);
   let object: any = {};
 
-  function dictToQueryParams(data: any) {
+  const dictToQueryParams = (data: any) => {
     const queryParams = [];
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
@@ -22,7 +22,8 @@ const useSidebarController = () => {
       }
     }
     return queryParams.join("&");
-  }
+  };
+
   const handleTheFilters = useCallback((type: string, values: string) => {
     if (object[type] && Array.isArray(object[type])) {
       if (object[type]?.includes(values)) {
@@ -52,7 +53,6 @@ const useSidebarController = () => {
   const handlePriceFilter = useCallback(
     (value: any) => {
       let query = "";
-      console.log('object =>>', object)
 
       if (value?.lowPrice && value?.highPrice) {
         query = `lowPrice=${value?.lowPrice}&highPrice=${value?.highPrice}`;
@@ -70,7 +70,12 @@ const useSidebarController = () => {
     [dispatch]
   );
 
-  return { priceRangeValue,handlePriceFilter, handleTheFilters, handleOnChangePriceRange };
+  return {
+    priceRangeValue,
+    handlePriceFilter,
+    handleTheFilters,
+    handleOnChangePriceRange,
+  };
 };
 
 export default useSidebarController;
