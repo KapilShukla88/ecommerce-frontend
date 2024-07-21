@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 import UITabs from "src/widgets/ui-tabs";
@@ -6,6 +7,7 @@ const AuthComponentView: React.FC<iAuthComponentViewProps> = ({
   authTabsData,
   selectedTabId = 0,
   formData,
+  avatarPreview,
   onSubmit = (f: any) => f,
   handleOnSelectTab = (f: number) => f,
   handleOnChangeInputFields = (f: any) => f,
@@ -19,7 +21,12 @@ const AuthComponentView: React.FC<iAuthComponentViewProps> = ({
           onClickTab={handleOnSelectTab}
         />
         <div className="mt-4">
-          <form action="#" className="flex flex-col gap-3" onSubmit={onSubmit}>
+          <form
+            action="#"
+            className="flex flex-col gap-3"
+            encType="multipart/form-data"
+            onSubmit={onSubmit}
+          >
             {selectedTabId === 2 && (
               <>
                 <input
@@ -60,6 +67,30 @@ const AuthComponentView: React.FC<iAuthComponentViewProps> = ({
               placeholder="Password"
               className="border-1 border-gray-300 rounded-md focus:outline-none active:outline-none"
             />
+            {selectedTabId === 2 && (
+              <div className="flex items-center gap-2">
+                <Image
+                  src={
+                    (avatarPreview as string)
+                      ? avatarPreview
+                      : require("@assets/images/avatar.png")
+                  }
+                  width={200}
+                  height={100}
+                  alt="image preview"
+                  className="rounded-full w-[3rem] h-[3rem]"
+                />
+
+                <input
+                  type="file"
+                  name="avatar"
+                  accept="image/*"
+                  className="flex p-0"
+                  placeholder="Avatar"
+                  onChange={handleOnChangeInputFields}
+                />
+              </div>
+            )}
             <input
               type="submit"
               className="bg-blue-500 p-2 cursor-pointer text-white rounded-md font-semibold tracking-wider"

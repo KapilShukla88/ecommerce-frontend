@@ -14,6 +14,7 @@ const authReducerSlice = createSlice({
     token: null,
     refresh_token: null,
     isLoggedIn: false,
+    avatar: "",
   },
   reducers: {
     setAuthenticatedResponse: (auth: iUser, { payload }) => {
@@ -78,5 +79,6 @@ export const getUserDetails = createSelector(
     userName: (auth?.first_name || "") + " " + (auth?.last_name || ""),
     email: auth?.email || "",
     isLoggedIn: auth?.isLoggedIn || false,
+    avatar: auth.avatar,
   })
 );

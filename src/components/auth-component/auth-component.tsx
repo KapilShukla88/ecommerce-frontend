@@ -9,6 +9,7 @@ const AuthComponent: React.FC<{}> = () => {
     authConstant,
     selectedTabId,
     formData,
+    avatarPreview,
     handleOnSelectTab,
     onSubmit,
     handleOnChangeInputFields,
@@ -18,6 +19,7 @@ const AuthComponent: React.FC<{}> = () => {
       authTabsData={authConstant}
       formData={formData}
       selectedTabId={selectedTabId}
+      avatarPreview={avatarPreview}
       onSubmit={onSubmit}
       handleOnSelectTab={handleOnSelectTab}
       handleOnChangeInputFields={handleOnChangeInputFields}

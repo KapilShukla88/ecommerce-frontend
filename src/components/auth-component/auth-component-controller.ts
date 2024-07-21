@@ -30,6 +30,10 @@ const useAuthComponentController = () => {
     email: "",
     password: "",
   });
+  const [avatar, setAvatar] = useState<any>({});
+  const [avatarPreview, setAvatarPreview] = useState<
+    string | ArrayBuffer | null
+  >("");
   const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
   const [isSigning, setIsSigning] = useState<false>(false);
 
@@ -65,7 +69,7 @@ const useAuthComponentController = () => {
           HttpMethod.POST,
           loginPayload,
           false,
-          { success: "Hi {first_name}! Welcome back!", default: true },
+          { success: "Register successfully!", default: true },
           "/auth/login"
         );
         if (response.success) {
@@ -103,17 +107,21 @@ const useAuthComponentController = () => {
           lastName: formData.lastName,
           email: formData.email,
           password: formData.password,
+          img: JSON.stringify(avatar),
         };
 
-        const response = await HttpService(
+        await HttpService(
           "",
           HttpMethod.POST,
           body,
           false,
-          { success: "Hi {user.name}! Welcome back!", default: true },
-          "/auth/signup"
+          {
+            success: "Hi {first_name}! Welcome to the FinestDeals!",
+            default: true,
+          },
+          "/auth/signup",
+          { "Content-Type": "multipart/form-data" }
         );
-        console.log("sign up response =>>", response);
       }
     } catch (error) {
       console.log(error);
@@ -123,6 +131,7 @@ const useAuthComponentController = () => {
     formData.firstName,
     formData.lastName,
     formData.password,
+    avatar,
     isSigningUp,
   ]);
 
@@ -150,6 +159,24 @@ const useAuthComponentController = () => {
       const inputFieldName = e.target?.name;
       const inputFieldValue = e.target?.value;
 
+      if (inputFieldName === "avatar") {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            console.log("e.target.files[0] =>>", e.target.files[0]);
+            setAvatarPreview(reader.result);
+            setAvatar({
+              name: e.target.files[0]?.name,
+              type: e.target.files[0]?.type,
+              size: e.target.files[0]?.size,
+              avatar: reader.result,
+            });
+          }
+        };
+        reader.readAsDataURL(e.target.files[0]);
+        return;
+      }
+
       setFormData((prev: formDataStateType) => ({
         ...prev,
         [inputFieldName]: inputFieldValue,
@@ -162,6 +189,7 @@ const useAuthComponentController = () => {
     authConstant,
     selectedTabId,
     formData,
+    avatarPreview,
     handleOnSelectTab,
     onSubmit,
     handleOnChangeInputFields,

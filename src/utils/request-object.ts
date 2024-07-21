@@ -13,11 +13,12 @@ export const createRequest = (
   method: string = "get",
   data: any = null,
   token?: any,
-  auth?: boolean
+  auth?: boolean,
+  headers: any = {}
 ) => {
-  let headers = {
-    "x-user-agent": xUserAgent,
-  };
+  // let headers = {
+    headers["x-user-agent"] = xUserAgent;
+  // };
 
   let request: any = {
     baseURL: "http://localhost:3001/v1/main",

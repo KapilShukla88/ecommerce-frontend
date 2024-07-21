@@ -52,15 +52,21 @@ const NavProfileComponentView: React.FC<{ cartCount: number }> = ({
           </Badge>
         </div>
         <div
-          className="flex items-center gap-1 cursor-pointer"
+          className="flex items-center gap-1 cursor-pointer rounded-full"
           onClick={userDetails?.isLoggedIn ? () => {} : handleOnClickAvatar}
         >
           <Image
-            src={require("../../../../../assets/images/avatar.png")}
+            src={
+              userDetails?.avatar
+                ? userDetails?.avatar
+                : require("../../../../../assets/images/avatar.png")
+            }
             width={30}
             height={30}
             alt="user icon"
+            className="rounded-full w-[30px] h-[30px]"
             loading="lazy"
+            objectFit="cover"
           />
           {getUserNames()}
         </div>

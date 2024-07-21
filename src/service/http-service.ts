@@ -47,14 +47,16 @@ async function HttpService<T>(
   data: HttpRequestBody,
   auth: boolean,
   messageConfig?: IMessageConfig,
-  overiddeBaseURL?: string
+  overiddeBaseURL?: string,
+  headers?: any
 ): Promise<T> {
   const request = createRequest(
     overiddeBaseURL || url || "ADD_URL_HERE",
     method,
     data,
     auth ? (getLocalStorage("token") as any) : null,
-    auth
+    auth,
+    headers
   );
   try {
     if (
