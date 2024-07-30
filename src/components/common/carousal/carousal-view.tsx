@@ -1,5 +1,6 @@
 import AssetsWrapperComponent from "@components/wrappers/assets-wrapper-component";
 import React from "react";
+import UIButton from "src/widgets/ui-button";
 
 const getFileType: {
   [key: string]: string;
@@ -19,7 +20,7 @@ const CarousalView: React.FC<iCarousalViewParams> = ({
 }) => {
   const carousalData = data?.[selectedIndex];
   return (
-    <div className="h-[40rem] w-full relative z-0">
+    <div className="h-[52rem] w-full relative z-0">
       {carousalData && (
         <AssetsWrapperComponent
           componentType={
@@ -30,6 +31,10 @@ const CarousalView: React.FC<iCarousalViewParams> = ({
           componentLINK={carousalData?.slug}
         />
       )}
+      {/* <UIButton
+        text="Explore Products"
+        className="absolute bottom-0 top-0 active:scale-95 ease-in-out h-14 delay-100 bg-white left-0 right-0 px-8 m-auto w-56 py-2 font-semibold shadow-md text-black  text-lg min-w-fit rounded-md"
+      /> */}
     </div>
   );
 };

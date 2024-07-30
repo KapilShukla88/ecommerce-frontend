@@ -16,7 +16,7 @@ const NavCategoriesDropdownLink = ({ handleCategories }: any) => {
         <ChevronDown />
         <p className="font-semibold">Categories</p>
       </div> */}
-      <Dropdown title="Categories">
+      <Dropdown title="Categories" style={{fontSize: 16, fontWeight: 500}}>
         {categories?.map((item, index) => {
           return (
             <Dropdown.Item
@@ -42,10 +42,16 @@ const NavTabsComponentView = () => {
   return (
     <div className="hidden md:block">
       <div className="flex flex-row gap-6 items-center relative">
-        <Link href="/" className="font-semibold text-gray-500">
+        <Link
+          href="/"
+          className="font-[550] text-[16px] text-black drop-shadow-none shadow-none"
+        >
           Home
         </Link>
-        <Link href="/products" className="font-semibold text-gray-500">
+        <Link
+          href="/products"
+          className=" text-[16px] font-[550] text-black drop-shadow-none shadow-none"
+        >
           Products
         </Link>
         {/* categories dropdown */}

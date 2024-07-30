@@ -32,7 +32,12 @@ const AssetsWrapperComponentView: React.FC<
       />,
     ],
   ]);
-  return <>{componentChooser.get(componentType)}</>;
+  return (
+    <>
+      {componentChooser.get(componentType)}
+      
+    </>
+  );
 };
 
 export default AssetsWrapperComponentView;

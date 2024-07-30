@@ -6,7 +6,7 @@ const fadeOutClassName = "";
 const fadeInClassName = "delay-75 ease-in-out duration-75";
 
 const useCarousalController = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(1);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [bannerClassName, setBannerClassName] = useState<string>("");
 
   const banners = Array(carousalData?.length)?.fill(0);

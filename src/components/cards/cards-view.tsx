@@ -29,7 +29,7 @@ const CardsView: React.FC<iCardsViewParams> = ({
     <div className="cursor-pointer">
       {children}
       <div className="flex flex-col items-center py-3">
-        <h3 className={`${title ? "visible" : "hidden"} text-xl font-semibold`}>
+        <h3 className={`${title ? "visible" : "hidden"} text-xl font-semibold text-black drop-shadow-none`}>
           {title}
         </h3>
         <p className={`${subTitle ? "visible" : "hidden"} text-center`}>
@@ -40,7 +40,7 @@ const CardsView: React.FC<iCardsViewParams> = ({
         </p>
         <div className="flex items-center gap-3 justify-center flex-1 w-full">
           <button
-            className="bg-[#ffb759] rounded-full px-4 py-1 font-700 text-sm mt-3 text-white"
+            className="bg-[#ffb759] rounded-full px-4 py-1 font-700 text-sm mt-3 text-white active:scale-95 ease-in-out delay-100"
             onClick={() => onClick(productId)}
           >
             View
@@ -52,7 +52,7 @@ const CardsView: React.FC<iCardsViewParams> = ({
                   ? () => handleToastNotification("cart")
                   : () => onClickCart(productId)
               }
-              className={`flex items-center bg-[#FF914D] text-white rounded-full px-6 py-1 font-700 text-sm mt-3`}
+              className={`flex items-center bg-[#FF914D] text-white rounded-full px-6 py-1 font-700 text-sm mt-3 active:scale-95 ease-in-out delay-100`}
             >
               Add to cart + <CartIcon width={15} height={15} color="#fff" />
             </button>

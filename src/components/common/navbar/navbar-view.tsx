@@ -24,15 +24,15 @@ const NavbarView: React.FC<{ isScrolled: boolean; cartCount: number }> = ({
   return (
     <nav
       className={`${pathname !== "/" ? "sticky" : "fixed"} top-0 ${
-        isScrolled || pathname !== "/" ? "md:top-0" : "md:top-3"
+        isScrolled || pathname !== "/" ? "md:top-0" : "md:top-6"
       } left-0 w-full bg-white md:bg-transparent z-10`}
     >
       <div
         className={`container ${
           isScrolled || pathname !== "/"
             ? "max-w-full bg-white"
-            : "md:rounded-xl"
-        } mx-auto shadow-md p-4`}
+            : "md:rounded-md bg-white"
+        } mx-auto shadow-md py-2 px-4`}
       >
         {/* Your navbar content goes here */}
         <div className="flex justify-between items-center">
