@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import Cards from "@components/cards";
@@ -5,6 +6,8 @@ import CardsCarousalComponent from "@components/wrappers/cards-carousal-componen
 
 const PopularProductsView: React.FC<{
   data: any;
+  isVisible?: boolean;
+  cardRef?: any;
   handleOnAddToCartProduct: (f: string) => void;
   handleOnClickProductView: (f: string) => void;
 }> = ({
@@ -13,9 +16,11 @@ const PopularProductsView: React.FC<{
   handleOnClickProductView = (f: string) => f,
 }) => {
   return (
-    <div className="p-3 mt-10">
+    <div className="p-3 my-10">
       <div>
-        <h2 className="text-3xl font-bold text-center">Popular Products</h2>
+        <h2 className="text-3xl font-bold text-center text-black">
+          Top Rated Products
+        </h2>
         <div className="flex justify-center mt-8">
           <div className="container">
             <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4">

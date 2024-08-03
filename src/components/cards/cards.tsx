@@ -10,11 +10,15 @@ const Cards: React.FC<iCardsParams> = ({
   productId = "",
   btnText = "",
   isCartNeed = false,
+  className = "",
+  cardRef,
   onClick = () => {},
   onClickCart = () => {},
 }) => {
   return (
     <CardsView
+      cardRef={cardRef}
+      className={className}
       title={title}
       productId={productId}
       price={price}

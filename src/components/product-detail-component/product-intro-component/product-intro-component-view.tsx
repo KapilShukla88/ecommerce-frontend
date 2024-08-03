@@ -112,7 +112,7 @@ const ProductIntroComponentView: React.FC<iProductIntroComponentViewParams> = ({
 }) => {
   return (
     <div className="w-full">
-      <div>
+      <div className="md:p-0 p-4">
         <div className="py-2">
           <h1 className="text-2xl font-semibold">
             {productDetails?.name || ""}

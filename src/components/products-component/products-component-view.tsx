@@ -10,7 +10,7 @@ const ProductsView: React.FC<iProductsViewProps> = ({
   handleAddProductOnCart = (f: string) => f,
 }) => {
   return (
-    <div className="p-5 flex-1">
+    <div className="md:p-5 mx-5 flex-1">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-6">
           <h1 className="text-3xl font-semibold"></h1>

@@ -1,9 +1,12 @@
 "use client";
+
 import { useSearchParams } from "next/navigation";
 import React from "react";
 import { brands, categories } from "src/resources/constants";
 import UICheckbox from "src/widgets/ui-checkbox";
 import RangeSlider from "src/widgets/ui-range-slider";
+import { Dropdown } from "rsuite";
+import "rsuite/dist/rsuite.min.css";
 
 /**
  *
@@ -131,6 +134,62 @@ const PriceFilterComponent = ({ handleTheFilters }: any) => {
   );
 };
 
+const MobileSidebarComponent = ({ handleTheFilters }: any) => {
+  return (
+    <div className="md:hidden p-2 mt-4">
+      <div className="flex items-center gap-5 relative">
+        <div className="relative">
+          <Dropdown
+            title="Categories"
+            className="bg-gray-200 rounded-full px-4"
+            style={{ fontSize: 16, fontWeight: 500 }}
+          >
+            {categories?.map((item, index) => {
+              return (
+                <Dropdown.Item key={index}>
+                  <div className="text-gray-500 flex gap-2 items-center">
+                    <UICheckbox
+                      name={item?.name}
+                      id={item?.id}
+                      onChange={(value: string) =>
+                        handleTheFilters("categories", value)
+                      }
+                    />
+                    <p>{item?.name}</p>
+                  </div>
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown>
+        </div>
+
+        <Dropdown
+          title="Brands"
+          className="bg-gray-200 rounded-full px-4"
+          style={{ fontSize: 16, fontWeight: 500 }}
+        >
+          {brands?.map((brand) => {
+            return (
+              <Dropdown.Item key={brand?.id}>
+                <div className="text-gray-500 flex gap-2 items-center">
+                  <UICheckbox
+                    name={brand?.name}
+                    id={brand?.id}
+                    onChange={(value: string) =>
+                      handleTheFilters("brands", value)
+                    }
+                  />
+                  <p>{brand?.name}</p>
+                </div>
+              </Dropdown.Item>
+            );
+          })}
+        </Dropdown>
+      </div>
+    </div>
+  );
+};
+
 /**
  * TODO: 1. apply discount filter
  * 2. Reviews
@@ -149,16 +208,19 @@ const SidebarView: React.FC<any> = ({
     return <></>;
   }
   return (
-    <div className="w-1/5 p-2 border-r-2 overflow-y-auto">
-      <h2 className="text-2xl font-semibold">Filter Products</h2>
-      <CategoriesFilterComponent handleTheFilters={handleTheFilters} />
-      <BrandsFilterComponent handleTheFilters={handleTheFilters} />
-      {/* <RangeFilterComponent
+    <>
+      <MobileSidebarComponent handleTheFilters={handleTheFilters} />
+      <div className="w-1/5 p-2 border-r-2 overflow-y-auto hidden md:block">
+        <h2 className="text-2xl font-semibold">Filter Products</h2>
+        <CategoriesFilterComponent handleTheFilters={handleTheFilters} />
+        <BrandsFilterComponent handleTheFilters={handleTheFilters} />
+        {/* <RangeFilterComponent
         priceRangeValue={priceRangeValue}
         handleOnChangePriceRange={handleOnChangePriceRange}
       /> */}
-      <PriceFilterComponent handleTheFilters={handlePriceFilter} />
-    </div>
+        <PriceFilterComponent handleTheFilters={handlePriceFilter} />
+      </div>
+    </>
   );
 };
 

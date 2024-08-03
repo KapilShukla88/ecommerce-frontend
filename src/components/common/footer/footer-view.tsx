@@ -14,12 +14,12 @@ const FooterView: React.FC<{}> = () => {
             style={{ width: "auto", height: "auto" }}
           />
         </div>
-        <div className="flex gap-1">
-          <p className="text-md text-white">About Us</p>
-          <p className="text-md text-white">|</p>
-          <p className="text-md text-white">Blog</p>
-          <p className="text-md text-white">|</p>
-          <p className="text-md text-white">FAQ</p>
+        <div className="flex gap-1 items-center">
+          <p className="text-md text-white m-0 p-0">About Us</p>
+          <p className="text-md text-white m-0 p-0">|</p>
+          <p className="text-md text-white m-0 p-0">Blog</p>
+          <p className="text-md text-white m-0 p-0">|</p>
+          <p className="text-md text-white m-0 p-0">FAQ</p>
         </div>
       </div>
       <p className="text-xs text-white text-center">© All copyright 2024</p>

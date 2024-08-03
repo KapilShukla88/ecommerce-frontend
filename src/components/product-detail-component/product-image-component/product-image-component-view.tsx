@@ -20,12 +20,12 @@ const ImagesSmallSlides = ({
   onClickSelectedImage = (f: number) => f,
 }: iImageSmallSlidesParams) => {
   return (
-    <div className="relative flex flex-col gap-2">
+    <div className="relative flex md:flex-col gap-2 overflow-x-auto">
       {images?.length > 0 &&
         images?.map((image: any, index: number) => {
           return (
             <div
-              className={`relative h-[7rem] w-[7rem] rounded-md overflow-hidden  ${
+              className={`relative md:h-[7rem] h-[5rem] md:w-[7rem] w-[5rem] rounded-md overflow-hidden  ${
                 selectedImagePosition === index
                   ? "border-[1px] border-gray-300"
                   : "shadow-md"
@@ -49,7 +49,7 @@ const ImagesSmallSlides = ({
 const ProductImageComponent = ({ productImage, altText = "" }: any) => {
   return (
     <div className="relative">
-      <div className="relative min-h-[30rem] max-h-[40rem] w-[30rem] rounded-md shadow-sm overflow-hidden">
+      <div className="relative min-h-[20rem] md:min-h-[30rem] max-h-[40rem] w-full md:w-[30rem] rounded-md shadow-sm overflow-hidden">
         <Image
           src={productImage}
           alt=""
@@ -68,7 +68,7 @@ const ProductImageComponentView: React.FC<iProductImageComponentViewParams> = ({
   handleOnSelectImage = (f: number) => f,
 }) => {
   return (
-    <div className="flex gap-6  p-4">
+    <div className="flex gap-3 md:gap-6 md:flex-row flex-col-reverse p-4">
       <ImagesSmallSlides
         images={productImages}
         onClickSelectedImage={handleOnSelectImage}

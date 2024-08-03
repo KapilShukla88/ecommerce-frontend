@@ -13,6 +13,8 @@ const CardsView: React.FC<iCardsViewParams> = ({
   btnText,
   isCartNeed,
   productId = "",
+  cardRef,
+  className = "",
   onClick = (f: string) => f,
   onClickCart = (f: string) => f,
 }) => {
@@ -26,10 +28,14 @@ const CardsView: React.FC<iCardsViewParams> = ({
     }
   }, []);
   return (
-    <div className="cursor-pointer">
+    <div ref={cardRef} className={className}>
       {children}
       <div className="flex flex-col items-center py-3">
-        <h3 className={`${title ? "visible" : "hidden"} text-xl font-semibold text-black drop-shadow-none`}>
+        <h3
+          className={`${
+            title ? "visible" : "hidden"
+          } text-xl font-semibold text-black drop-shadow-none`}
+        >
           {title}
         </h3>
         <p className={`${subTitle ? "visible" : "hidden"} text-center`}>

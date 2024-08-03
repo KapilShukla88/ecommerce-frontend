@@ -31,8 +31,8 @@ const ShippingDetailsView: React.FC<any> = ({
 }) => {
   return (
     <div className="w-screen max-w-full flex justify-center items-center flex-col">
-      <div className="bg-white w-[25vw] border-box h-[90vh] overflow-hidden">
-        <h2 className="text-center text-[rgba(0,0,0,0.664) text-lg p-[1.3vmax] border-b-[1px] w-1/2 m-auto">
+      <div className="bg-white md:w-[25vw] border-box h-[90vh] overflow-hidden">
+        <h2 className="text-center text-[rgba(0,0,0,0.664) text-lg p-[1.3vmax] border-b-[1px] md:w-1/2 m-auto">
           Shipping Details
         </h2>
         <form
@@ -41,22 +41,22 @@ const ShippingDetailsView: React.FC<any> = ({
           onSubmit={shippingSubmit}
         >
           <div className="flex w-full items-center relative">
-            <HomeIcon className="absolute left-6" style={{ fontSize: 23 }} />
+            <HomeIcon className="absolute md:left-6 left-2" style={{ fontSize: 23 }} />
             <input
               type="text"
               placeholder="Address"
-              className="text-sm outline-none border-box py-[1vmax] px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
+              className="text-sm outline-none border-box py-[1vmax] px-[5vmax] md:px-[5vmax] md:px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
               required
               value={getFormValues("address")}
               onChange={(e) => handleOnChange("address", e.target.value)}
             />
           </div>
           <div className="flex w-full items-center relative">
-            <CityIcon className="absolute left-6" style={{ fontSize: 23 }} />
+            <CityIcon className="absolute md:left-6 left-2" style={{ fontSize: 23 }} />
             <input
               type="text"
               placeholder="City"
-              className="text-sm outline-none border-box py-[1vmax] px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
+              className="text-sm outline-none border-box py-[1vmax] px-[5vmax] md:px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
               required
               value={getFormValues("city")}
               onChange={(e) => handleOnChange("city", e.target.value)}
@@ -64,35 +64,35 @@ const ShippingDetailsView: React.FC<any> = ({
           </div>
           <div className="flex w-full items-center relative">
             <LocationIcon
-              className="absolute left-6"
+              className="absolute md:left-6 left-2"
               style={{ fontSize: 23 }}
             />
             <input
               type="number"
               placeholder="Pin code"
-              className="text-sm outline-none border-box py-[1vmax] px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
+              className="text-sm outline-none border-box py-[1vmax] px-[5vmax] md:px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
               required
               value={getFormValues("pinCode")}
               onChange={(e) => handleOnChange("pinCode", e.target.value)}
             />
           </div>
           <div className="flex w-full items-center relative">
-            <PhoneIcon className="absolute left-6" style={{ fontSize: 23 }} />
+            <PhoneIcon className="absolute md:left-6 left-2" style={{ fontSize: 23 }} />
             <input
               type="number"
               placeholder="Phone number"
-              className="text-sm outline-none border-box py-[1vmax] px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
+              className="text-sm outline-none border-box py-[1vmax] px-[5vmax] md:px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
               required
               value={getFormValues("phoneNo")}
               onChange={(e) => handleOnChange("phoneNo", e.target.value)}
             />
           </div>
           <div className="flex w-full items-center relative">
-            <GlobeIcon className="absolute left-6" style={{ fontSize: 23 }} />
+            <GlobeIcon className="absolute md:left-6 left-2" style={{ fontSize: 23 }} />
             <select
               required
               value={getFormValues("country")}
-              className="text-sm outline-none border-box py-[1vmax] px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
+              className="text-sm outline-none border-box py-[1vmax] px-[5vmax] md:px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
               onChange={(e) => handleOnChange("country", e.target.value)}
             >
               <option value="">Country</option>
@@ -108,11 +108,11 @@ const ShippingDetailsView: React.FC<any> = ({
           </div>
           {getFormValues("country") && (
             <div className="flex w-full items-center relative">
-              <CityIcon className="absolute left-6" style={{ fontSize: 23 }} />
+              <CityIcon className="absolute md:left-6 left-2" style={{ fontSize: 23 }} />
               <select
                 required
                 value={getFormValues("state")}
-                className="text-sm outline-none border-box py-[1vmax] px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
+                className="text-sm outline-none border-box py-[1vmax] px-[5vmax] md:px-[4vmax] pr-[1vmax] w-full border-1 border-[rgba(0,0,0,0.267)] rounded-md"
                 onChange={(e) => handleOnChange("state", e.target.value)}
               >
                 <option value="">State</option>

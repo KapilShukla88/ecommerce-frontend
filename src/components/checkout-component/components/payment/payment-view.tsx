@@ -104,28 +104,28 @@ const CheckoutComponent = ({
     }
   };
   return (
-    <form className="w-[22%] h-full" onSubmit={handleOnSubmit}>
-      <h2 className="text-center text-[rgba(0,0,0,0.664) text-lg p-[1.3vmax] border-b-[1px] w-1/2 m-auto">
+    <form className="md:w-[22%] w-full h-full" onSubmit={handleOnSubmit}>
+      <h2 className="text-center text-[rgba(0,0,0,0.664) text-lg p-[1.3vmax] border-b-[1px] md:w-1/2 w-full m-auto">
         Card Info
       </h2>
       <div className="flex m-[2vmax_0] items-center">
-        <CreditCardIcon className="absolute text-lg translate-x-[1vmax] text-[1.6vmax] text-[rgba(0,0,0,0.651)]" />
+        <CreditCardIcon className="absolute text-lg translate-x-[1vmax] text-[2vmax] md:text-[1.6vmax] text-[rgba(0,0,0,0.651)]" style={{fontSize: 17}} />
 
-        <CardNumberElement className="px-[4vmax] py-[1vmax] pr-[1vmax] w-full box-border border border-[rgba(0,0,0,0.267)] rounded-[4px] outline-none" />
+        <CardNumberElement className="px-[4vmax] md:py-[1vmax] py-[2vmax] pr-[1vmax] w-full box-border border border-[rgba(0,0,0,0.267)] rounded-[4px] outline-none" />
       </div>
       <div className="flex m-[2vmax_0] items-center">
-        <EventIcon className="absolute text-lg translate-x-[1vmax] text-[1.6vmax] text-[rgba(0,0,0,0.651)]" />
-        <CardExpiryElement className="px-[4vmax] py-[1vmax] pr-[1vmax] w-full box-border border border-[rgba(0,0,0,0.267)] rounded-[4px] outline-none" />
+        <EventIcon className="absolute text-lg translate-x-[1vmax] text-[2vmax] md:text-[1.6vmax] text-[rgba(0,0,0,0.651)]" style={{fontSize: 17}} />
+        <CardExpiryElement className="px-[4vmax] md:py-[1vmax] py-[2vmax] pr-[1vmax] w-full box-border border border-[rgba(0,0,0,0.267)] rounded-[4px] outline-none" />
       </div>
       <div className="flex m-[2vmax_0] items-center">
-        <VpnKeyIcon className="absolute text-lg translate-x-[1vmax] text-[1.6vmax] text-[rgba(0,0,0,0.651)]" />
-        <CardCvcElement className="px-[4vmax] py-[1vmax] pr-[1vmax] w-full box-border border border-[rgba(0,0,0,0.267)] rounded-[4px] outline-none" />
+        <VpnKeyIcon className="absolute text-lg translate-x-[1vmax] text-[2vmax] md:text-[1.6vmax] text-[rgba(0,0,0,0.651)]" style={{fontSize: 17}} />
+        <CardCvcElement className="px-[4vmax] md:py-[1vmax] py-[2vmax] pr-[1vmax] w-full box-border border border-[rgba(0,0,0,0.267)] rounded-[4px] outline-none" />
       </div>
       <input
         type="submit"
         value={`Pay - Rs. ${orderInfo && orderInfo?.totalPrice}`}
         ref={payBtn}
-        className="border-none bg-[tomato] text-white font-light text-[0.9vmax] font-roboto w-full p-[0.8vmax] cursor-pointer transition-all duration-500 outline-none"
+        className="border-none bg-[tomato] text-white font-light md:text-[0.9vmax] text-[2vmax] font-roboto w-full p-[0.8vmax] cursor-pointer transition-all duration-500 outline-none"
       />
     </form>
   );

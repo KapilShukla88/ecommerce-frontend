@@ -17,7 +17,7 @@ const SummaryComponent = ({
   handleOnProceedToCheckout,
 }: any) => {
   return (
-    <div className="rounded-md shadow-md p-2 flex flex-[0.3] bg-[#F2F2F2] h-96 overflow-y-auto">
+    <div className="rounded-md shadow-md p-2 flex flex-[0.3] bg-[#F2F2F2] md:h-96 h-auto md:overflow-y-auto">
       <div className="w-full flex flex-col">
         <p className="text-center text-xl">Summary</p>
         <div className="flex flex-col justify-between flex-grow">
@@ -55,9 +55,10 @@ const CartProductCard = ({ cartProduct, onDelete }: any) => {
         alt={cartProduct?.product?.images[0]?.alt_text}
         width={200}
         height={200}
+        sizes="(max-width: 780px) 100px "
         className="rounded-xl"
       />
-      <div className="w-full flex flex-row">
+      <div className="w-full flex md:flex-row flex-col">
         <div className="w-full flex flex-col justify-between">
           <div>
             <h1 className="text-xl font-semibold">
@@ -95,7 +96,7 @@ const CartProductCard = ({ cartProduct, onDelete }: any) => {
             </p>
           </div>
         </div>
-        <div>
+        <div className="md:mt-0 mt-2">
           <UIButton
             text="delete"
             onClick={() => onDelete(cartProduct?.product?._id)}
@@ -130,7 +131,7 @@ const CartComponentView: React.FC<iCartComponentViewParams> = ({
   }
   return (
     <div className=" flex justify-center p-4">
-      <div className="md:w-2/3 flex gap-2">
+      <div className="md:w-2/3 flex md:flex-row flex-col gap-2">
         <div className="flex flex-col gap-3 flex-[0.7] h-auto overflow-y-auto">
           {data?.map((product: any) => {
             return (

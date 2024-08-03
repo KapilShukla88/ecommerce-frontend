@@ -6,15 +6,8 @@ import MenuIcon from "src/resources/icons/menu-icon";
 import LogoContainer from "./components/logo-container";
 import NavProfileComponent from "./components/nav-profile-component";
 import NavTabsComponent from "./components/nav-tabs-component";
+import NavMobileComponentView from "./components/nav-mobile-component/nav-mobile-component-view";
 
-// TODO: need to separate this based on the responsive ness
-const NavMobileMenuComponent = () => {
-  return (
-    <div className="block md:hidden">
-      <MenuIcon />
-    </div>
-  );
-};
 
 const NavbarView: React.FC<{ isScrolled: boolean; cartCount: number }> = ({
   isScrolled = false,
@@ -39,7 +32,7 @@ const NavbarView: React.FC<{ isScrolled: boolean; cartCount: number }> = ({
           <LogoContainer />
           <NavTabsComponent />
           <NavProfileComponent cartCount={cartCount} />
-          <NavMobileMenuComponent />
+          <NavMobileComponentView cartCount={cartCount} />
         </div>
       </div>
     </nav>

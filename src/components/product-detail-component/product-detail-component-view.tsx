@@ -18,7 +18,7 @@ const ProductDetailComponentView: React.FC<{
   return (
     <div className="flex justify-center">
       <div className="w-full md:max-w-[80%] md:h-screen">
-        <div className="flex gap-4">
+        <div className="flex md:flex-row flex-col gap-4">
           <ProductImageComponent
             productImages={data?.images}
             productId={productId}

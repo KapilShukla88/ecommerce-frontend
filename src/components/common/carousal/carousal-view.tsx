@@ -20,7 +20,7 @@ const CarousalView: React.FC<iCarousalViewParams> = ({
 }) => {
   const carousalData = data?.[selectedIndex];
   return (
-    <div className="h-[52rem] w-full relative z-0">
+    <div className="h-[30rem] md:h-[52rem] w-full relative z-0">
       {carousalData && (
         <AssetsWrapperComponent
           componentType={

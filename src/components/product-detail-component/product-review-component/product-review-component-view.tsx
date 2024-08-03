@@ -33,12 +33,12 @@ const ProductReviewComponentView: React.FC<{ reviews: any }> = ({
     return <></>;
   }
   return (
-    <div className="mt-5">
+    <div className="my-5">
       <div className="flex flex-col gap-1">
         <p className="text-2xl font-semibold text-center">Reviews</p>
         <div className="h-[0.5px] w-1/2 bg-gray-300 m-auto" />
       </div>
-      <div className="mt-10">
+      <div className="mt-10 flex justify-center md:justify-start overflow-x-auto">
         <div className="flex gap-2 flex-wrap">
           {reviews?.map((review: any) => {
             return (
