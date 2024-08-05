@@ -5,7 +5,6 @@ export const DYNAMICS_CONSTANTS = {
   ADDED_TO_CART: "Added to cart.",
 };
 
-
 export const PRODUCT_CATEGORY = {
   SNEAKER: "sneaker",
   TSHIRT: "tshirt",
@@ -13,7 +12,7 @@ export const PRODUCT_CATEGORY = {
   CAMERA: "camera",
   PHONE: "phone",
   HEADPHONE: "headphone",
-}; 
+};
 
 export const categories = [
   {
@@ -34,10 +33,9 @@ export const categories = [
   },
   {
     id: PRODUCT_CATEGORY.HEADPHONE,
-    name: "Headphone"
-  }
+    name: "Headphone",
+  },
 ];
-
 
 export const PRODUCT_BRAND = {
   PUMA: "puma",
@@ -45,33 +43,34 @@ export const PRODUCT_BRAND = {
   SONY: "sony",
   NIKE: "nike",
   APPLE: "apple",
-  SAMSUNG: "samsung"
+  SAMSUNG: "samsung",
 };
 
 export const brands = [
-    {
-        id: PRODUCT_BRAND.PUMA,
-        name: "Puma"
-    },
-    {
-        id: PRODUCT_BRAND.ADDIDAS,
-        name: "Addidas"
-    },
-    {
-        id: PRODUCT_BRAND.SONY,
-        name: "Sony"
-    },
-    {
-        id: PRODUCT_BRAND.NIKE,
-        name: "Nike"
-    },
-    {
-        id: PRODUCT_BRAND.APPLE,
-        name: "Apple"
-    },
-    {
-        id: PRODUCT_BRAND.SAMSUNG,
-        name :"Samsung"
-    }
-]
+  {
+    id: PRODUCT_BRAND.PUMA,
+    name: "Puma",
+  },
+  {
+    id: PRODUCT_BRAND.ADDIDAS,
+    name: "Addidas",
+  },
+  {
+    id: PRODUCT_BRAND.SONY,
+    name: "Sony",
+  },
+  {
+    id: PRODUCT_BRAND.NIKE,
+    name: "Nike",
+  },
+  {
+    id: PRODUCT_BRAND.APPLE,
+    name: "Apple",
+  },
+  {
+    id: PRODUCT_BRAND.SAMSUNG,
+    name: "Samsung",
+  },
+];
 
+export const EVENT_BUS_OAUTH_LOGOUT = "OAUTH_LOGOUT";

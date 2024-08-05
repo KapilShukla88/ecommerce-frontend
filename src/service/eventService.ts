@@ -5,7 +5,7 @@ export const eventBus = {
   dispatch(event: any, data: any) {
     document.dispatchEvent(new CustomEvent(event, { detail: data }));
   },
-  remove(event: any, callback: any) {
+  remove(event: any, callback?: any) {
     document.removeEventListener(event, callback);
   },
 };

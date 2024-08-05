@@ -14,7 +14,7 @@ const AuthComponentView: React.FC<iAuthComponentViewProps> = ({
 }) => {
   return (
     <div className="h-[calc(100vh-11.3rem)] p-5">
-      <div className="max-w-[30%] m-auto p-4 shadow-md">
+      <div className="md:max-w-[30%] m-auto p-4 shadow-md">
         <UITabs
           tabsData={authTabsData}
           selectedTabId={selectedTabId}

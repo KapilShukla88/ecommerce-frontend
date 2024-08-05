@@ -8,8 +8,8 @@ import {
 import { API_USER_LOGIN, BASE_URL } from "src/resources/api-end-points";
 import { eventBus } from "./eventService";
 import { createRequest } from "@utils/request-object";
+import { EVENT_BUS_OAUTH_LOGOUT } from "src/resources/constants";
 
-const EVENT_BUS_OAUTH_LOGOUT = "OAUTH_LOGOUT";
 
 let refreshApiCall: Promise<any> | null = null;
 

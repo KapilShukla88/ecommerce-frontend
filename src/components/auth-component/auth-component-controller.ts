@@ -69,13 +69,12 @@ const useAuthComponentController = () => {
           HttpMethod.POST,
           loginPayload,
           false,
-          { success: "Register successfully!", default: true },
+          { success: "LoggedIn successfully!", default: true },
           "/auth/login"
         );
         if (response.success) {
           const options = {
-            first_name: response.data.first_name,
-            last_name: response.data.last_name,
+            user_name: response.data.userName,
             email: response.data.email,
             avatar: response.data.avatar,
             refreshToken: response.data.refreshToken,

@@ -19,8 +19,8 @@ const authReducerSlice = createSlice({
   reducers: {
     setAuthenticatedResponse: (auth: iUser, { payload }) => {
       // setLocalStorage("isLoggedIn", payload);
-
       const {
+        user_name,
         first_name,
         last_name,
         email,
@@ -31,6 +31,7 @@ const authReducerSlice = createSlice({
       } = payload;
 
       const userData = {
+        user_name,
         first_name,
         last_name,
         email,
@@ -41,6 +42,7 @@ const authReducerSlice = createSlice({
         mobile_number: "0",
       };
 
+      auth.user_name = userData.user_name;
       auth.first_name = userData.first_name;
       auth.last_name = userData.last_name;
       auth.mobile_number = "0";
@@ -56,10 +58,24 @@ const authReducerSlice = createSlice({
       // auth.last_name = payload.last_name;
       // auth.isLoggedIn = payload.isLoggedIn;
     },
+    logout: (auth: iUser, {payload}) => {
+      localStorage.clear();
+      sessionStorage.clear();
+      auth.avatar = "",
+      auth.email = null;
+      auth.first_name = null;
+      auth.first_name = null;
+      auth.isLoggedIn = false;
+      auth.refresh_token = null;
+      auth.token = null;
+      auth.user_id = null;
+    }
   },
 });
 
-const { setAuthenticatedResponse } = authReducerSlice.actions;
+const { setAuthenticatedResponse, logout } = authReducerSlice.actions;
+
+export const reduxLogoutAction = logout;
 
 export const updateLoginResponse =
   (payload: any) => (dispatch: AppDispatch) => {
@@ -76,7 +92,7 @@ export const getUserIsLoggedInStatus = createSelector(
 export const getUserDetails = createSelector(
   (state: any) => state.entities.auth,
   (auth: iUser) => ({
-    userName: (auth?.first_name || "") + " " + (auth?.last_name || ""),
+    userName: (auth?.user_name || "") ,
     email: auth?.email || "",
     isLoggedIn: auth?.isLoggedIn || false,
     avatar: auth.avatar,
